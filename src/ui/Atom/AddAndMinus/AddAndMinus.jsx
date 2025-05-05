@@ -1,16 +1,15 @@
-import { FiPlusSquare } from "react-icons/fi";
-import { FiMinusSquare } from "react-icons/fi";
+import { LuMinus } from "react-icons/lu";
+import { LuPlus } from "react-icons/lu";
+
 import { useController } from "react-hook-form";
+import Button from "../Button/Button";
 const AddAndMinus = ({
   control,
   name,
   defaultValue = 0,
-  min = 0,
-  max = Number.POSITIVE_INFINITY,
   label,
   description,
   price,
-  step = 1,
 }) => {
   const {
     field,
@@ -20,20 +19,22 @@ const AddAndMinus = ({
     control,
     defaultValue,
     rules: {
-      min,
-      max,
+      min: 0,
+      max: 10,
     },
   });
+  const min = 0;
+  const max = 10;
 
   const handleIncrement = () => {
-    const newValue = Number(field.value) + step;
+    const newValue = Number(field.value) + 1;
     if (newValue <= max) {
       field.onChange(newValue);
     }
   };
 
   const handleDecrement = () => {
-    const newValue = Number(field.value) - step;
+    const newValue = Number(field.value) - 1;
     if (newValue >= min) {
       field.onChange(newValue);
     }
@@ -48,42 +49,55 @@ const AddAndMinus = ({
 
   return (
     <div className="flex justify-between h-[52px] items-center">
-      <div>
-        <label htmlFor={name} className="block text-2xl font-medium ">
+      <div className="">
+        <label htmlFor={name} className="block text-xl font-semibold ">
           {label}
         </label>
-        {description && <p>{description}</p>}
+        {description && (
+          <p className="text-bw-700 leading-5 text-sm font-normal ">
+            {description}
+          </p>
+        )}
       </div>
-      <div className="flex items-center gap-6">
-        <p className="font-medium text-2xl">{price}</p>
+      <div className="flex items-center gap-4 md:gap-6">
+        <p className="font-semibold text-lg text-nowrap">{price}</p>
         <div className="flex items-center justify-evenly">
-          <button
+          <Button
             type="button"
             onClick={handleDecrement}
+            size="md"
+            variant="tertiary"
+            iconOnly={true}
+            iconStart={
+              <LuMinus className="w-[16px] h-[16px] md:w-[24px] md:h-[24px]" />
+            }
             disabled={Number(field.value) <= min}
             aria-label="Decrease value"
-          >
-            <FiMinusSquare className="w-8 h-8" />
-          </button>
+          ></Button>
+
           <input
             id={name}
-            type="number"
-            className=" rounded-none text-center [appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none"
-            min={min}
-            max={max}
-            step={step}
+            type="text"
+            className=" font-semibold text-lg text-center w-12 h-10   readonly focus:ring-0 focus:outline-none pointer-events-none"
             value={field.value}
             onChange={handleChange}
             onBlur={field.onBlur}
           />
-          <button
+          {/* [&::-webkit-outer-spin-button]:appearance-none */}
+          {/* [appearance:textfield]   */}
+          {/* [&::-webkit-inner-spin-button]:appearance-none  */}
+          <Button
             type="button"
             onClick={handleIncrement}
+            size="md"
+            variant="tertiary"
+            iconOnly={true}
+            iconStart={
+              <LuPlus className="w-[16px] h-[16px] md:w-[24px] md:h-[24px]" />
+            }
             disabled={Number(field.value) >= max}
             aria-label="Increase value"
-          >
-            <FiPlusSquare className="w-8 h-8" />
-          </button>
+          ></Button>
         </div>
         {error && <p className="text-sm text-red-500 mt-1">{error.message}</p>}
       </div>

@@ -3,6 +3,8 @@ import AddAndMinus from "@/ui/Atom/AddAndMinus/AddAndMinus";
 import Button from "@/ui/Atom/Button/Button";
 import { useForm, SubmitHandler } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { LuTicket } from "react-icons/lu";
+
 import { z } from "zod";
 const ticketSchema = z
   .object({
@@ -10,24 +12,20 @@ const ticketSchema = z
     student: z.number().min(0),
     child: z.number().min(0),
     senior: z.number().min(0),
+    family: z.number().min(0),
   })
-  .refine(
-    (data) => {
-      const total = data.adult + data.student + data.child + data.senior;
-      return total > 0;
-    },
-    {
-      message: "Du skal vælge mindst én billet",
-      path: ["_form"],
-    }
-  );
+  .refine((data) => {
+    const total =
+      data.adult + data.student + data.child + data.senior + data.family;
+    return total > 0;
+  });
 
 const TicketSelection = ({ onNext, defaultValues }) => {
   const {
     handleSubmit,
     control,
     watch,
-    formState: { errors },
+    // formState: { errors },
   } = useForm({
     resolver: zodResolver(ticketSchema),
     defaultValues: {
@@ -35,25 +33,32 @@ const TicketSelection = ({ onNext, defaultValues }) => {
       student: defaultValues.student ?? 0,
       child: defaultValues.child ?? 0,
       senior: defaultValues.senior ?? 0,
+      family: defaultValues.family ?? 0,
     },
   });
   const values = watch();
 
   const totalTickets =
-    values.adult + values.student + values.child + values.senior;
+    values.adult +
+    values.student +
+    values.child +
+    values.senior +
+    values.family;
 
   const totalPrice =
-    values.adult * 120 +
+    values.adult * 160 +
     values.student * 100 +
-    values.child * 60 +
+    values.child * 0 +
+    values.family * 300 +
     values.senior * 80;
 
   const onSubmit = (data) => {
     const tickets = [
-      { type: "Voksen", quantity: data.adult, price: 120 },
+      { type: "Voksen", quantity: data.adult, price: 160 },
       { type: "Studerende", quantity: data.student, price: 100 },
-      { type: "Barn", quantity: data.child, price: 60 },
+      { type: "Barn", quantity: data.child, price: 0 },
       { type: "Pensionist", quantity: data.senior, price: 80 },
+      { type: "family", quantity: data.family, price: 300 },
     ].filter((ticket) => ticket.quantity > 0); // Fjern dem der er 0
     onNext({
       tickets,
@@ -62,62 +67,82 @@ const TicketSelection = ({ onNext, defaultValues }) => {
     });
   };
   return (
-    <div className="m-8 grid grid-cols-2">
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <h1 className=" font-medium text-5xl col-span-1 pb-5">
-          Vælg Billetter
-        </h1>
-        <div className=" space-y-4 ">
+    <div className="">
+      <form
+        className=""
+        onSubmit={handleSubmit(onSubmit)}
+        // skal være i 571
+      >
+        <div className="max-w-[571px] ">
+          <div className="flex items-center pb-3  gap-3">
+            <div
+              className="aspect-square w-8 h-8 flex items-center justify-center
+ rounded-full bg-bw-950"
+            >
+              <p className="text-bw-50 text-center">1</p>
+            </div>
+            <h1 className=" font-semibold text-3xl  ">Vælg Billetter</h1>
+          </div>
+
+          <p>
+            En dagsbillet giver adgang til alle udstillinger på
+            Vikingeskibsmuseet . Billetten skal indløses inden for 1 år fra
+            købsdatoen.
+          </p>
+        </div>
+        <div className="border-b border-bw-950 w-full mb-8 md:mb-12 mt-3 md:mt-8 "></div>
+        <div className=" space-y-7 max-w-[571px]  ">
           <AddAndMinus
             name="adult"
             control={control}
-            label="Voksen Billet"
-            price={"120 kr"}
-            min={0}
-            step={1}
-            max={10}
+            label="Voksen 18+"
+            price={"160 kr"}
           />
           <AddAndMinus
             name="student"
             control={control}
-            label="Studerende Billet"
-            description={"Studerende med gyldigt studiekort"}
+            label="Studerende"
+            description={"Med gyldigt studiekort."}
             price={"100 kr"}
-            min={0}
-            step={1}
-            max={10}
           />
           <AddAndMinus
             name="child"
             control={control}
-            label="Børne Billet"
-            price={"60 kr"}
+            label="Børn / under 18"
+            price={"0 kr"}
             description={"Børn under 14 år skal følges med en voksen"}
-            min={0}
-            step={1}
-            max={10}
           />
           <AddAndMinus
             name="senior"
             control={control}
             label="Pensionist Billet"
             price={"80 kr"}
-            min={0}
-            step={1}
-            max={10}
           />
-          {errors._form && (
-            <p className="text-red-500 mt-2">{errors._form.message}</p>
-          )}
-          <div className="mt-6 text-lg flex justify-between items-center font-medium">
-            <p>I alt( Billetter {totalTickets})</p>
-            <p>pris i alt {totalPrice} kr</p>
+          <AddAndMinus
+            name="family"
+            control={control}
+            label="Familie billet"
+            description={"Inkludere 2 voksne+børn 0-17 år."}
+            price={"300 kr"}
+          />
+          <div className="mt-6 text-xl flex justify-between  items-center font-semibold ">
+            <p>I alt ( {totalTickets} Billetter )</p>
+            <p>{totalPrice} kr.</p>
           </div>
-        </div>
-        <div className="flex justify-end">
-          <Button type="submit" variant="secondary" size="lg">
-            Fortsæt
-          </Button>
+          <div className="flex  justify-end">
+            <Button
+              type="submit"
+              variant="primary"
+              size="md"
+              className="w-full md:w-auto"
+              iconOnly={false}
+              iconAndText={true}
+              iconStart={<LuTicket />}
+              disabled={totalTickets === 0}
+            >
+              Køb
+            </Button>
+          </div>
         </div>
       </form>
     </div>

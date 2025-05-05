@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./colors.css";
 
 :root {
   --background: #ffffff;
@@ -10,6 +11,85 @@
   --color-foreground: var(--foreground);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  --color-bw-50: var(--color-BW-50);
+  --color-bw-100: var(--color-BW-100);
+  --color-bw-200: var(--color-BW-200);
+  --color-bw-300: var(--color-BW-300);
+  --color-bw-400: var(--color-BW-400);
+  --color-bw-500: var(--color-BW-500);
+  --color-bw-600: var(--color-BW-600);
+  --color-bw-700: var(--color-BW-700);
+  --color-bw-800: var(--color-BW-800);
+  --color-bw-900: var(--color-BW-900);
+  --color-bw-950: var(--color-BW-950);
+
+  --color-red-50: var(--color-red-50);
+  --color-red-100: var(--color-red-100);
+  --color-red-200: var(--color-red-200);
+  --color-red-300: var(--color-red-300);
+  --color-red-400: var(--color-red-400);
+  --color-red-500: var(--color-red-500);
+  --color-red-600: var(--color-red-600);
+  --color-red-700: var(--color-red-700);
+  --color-red-800: var(--color-red-800);
+  --color-red-900: var(--color-red-900);
+  --color-red-950: var(--color-red-950);
+
+  --color-blue-50: var(--color-blue-50);
+  --color-blue-100: var(--color-blue-100);
+  --color-blue-200: var(--color-blue-200);
+  --color-blue-300: var(--color-blue-300);
+  --color-blue-400: var(--color-blue-400);
+  --color-blue-500: var(--color-blue-500);
+  --color-blue-600: var(--color-blue-600);
+  --color-blue-700: var(--color-blue-700);
+  --color-blue-800: var(--color-blue-800);
+  --color-blue-900: var(--color-blue-900);
+  --color-blue-950: var(--color-blue-950);
+
+  --color-blue-50: var(--color-blue-50);
+  --color-blue-100: var(--color-blue-100);
+  --color-blue-200: var(--color-blue-200);
+  --color-blue-300: var(--color-blue-300);
+  --color-blue-400: var(--color-blue-400);
+  --color-blue-500: var(--color-blue-500);
+  --color-blue-600: var(--color-blue-600);
+  --color-blue-700: var(--color-blue-700);
+  --color-blue-800: var(--color-blue-800);
+  --color-blue-900: var(--color-blue-900);
+  --color-blue-950: var(--color-blue-950);
+
+  --color-yellow-50: var(--color-Yellow-50);
+  --color-yellow-100: var(--color-Yellow-100);
+  --color-yellow-200: var(--color-Yellow-200);
+  --color-yellow-300: var(--color-Yellow-300);
+  --color-yellow-400: var(--color-Yellow-400);
+  --color-yellow-500: var(--color-Yellow-500);
+  --color-yellow-600: var(--color-Yellow-600);
+  --color-yellow-700: var(--color-Yellow-700);
+  --color-yellow-800: var(--color-Yellow-800);
+  --color-yellow-900: var(--color-Yellow-900);
+  --color-yellow-950: var(--color-Yellow-950);
+
+  --color-beige-50: var(--color-beige-50);
+  --color-beige-100: var(--color-beige-100);
+  --color-beige-200: var(--color-beige-200);
+  --color-beige-300: var(--color-beige-300);
+  --color-beige-400: var(--color-beige-400);
+  --color-beige-500: var(--color-beige-500);
+  --color-beige-600: var(--color-beige-600);
+  --color-beige-700: var(--color-beige-700);
+  --color-beige-800: var(--color-beige-800);
+  --color-beige-900: var(--color-beige-900);
+  --color-beige-950: var(--color-beige-950);
+
+  --color-success: var(--color-success);
+  --color-error: var(--color-error);
+
+  /* spacing clamps */
+
+  --spacing-12-271: clamp(0.75rem, -4.85rem + 28vw, 16.9375rem);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -19,6 +99,36 @@
   }
 }
 
+/* .grid-content-layout {
+  display: grid;
+  gap: 0;
+  grid-template-columns: [start] minmax(16px, 271px) [content] 571px [end] minmax(
+      16px,
+      271px
+    );
+}
+
+@media (max-width: 480px) {
+  .grid-content-layout {
+    grid-template-columns: 16px 1fr 16px;
+  }
+} */
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+textarea:-webkit-autofill:hover,
+textarea:-webkit-autofill:focus,
+select:-webkit-autofill,
+select:-webkit-autofill:hover,
+select:-webkit-autofill:focus {
+  box-shadow: 0 0 0 1000px white inset !important;
+  -webkit-text-fill-color: black !important;
+  transition: background-color 9999s ease-out, color 9999s ease-out;
+  transition-delay: 9999s;
+}
+/* skal lige tjække op på farvveren */
 body {
   background: var(--background);
   color: var(--foreground);

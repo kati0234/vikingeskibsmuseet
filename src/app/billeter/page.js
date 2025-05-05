@@ -15,9 +15,7 @@ export default function Billeter() {
   const prevStep = () => setStep((prev) => prev - 1);
 
   return (
-    <div className="h-[1000px]">
-      <h1 className="text-9xl text-blue-700"> billeter</h1>
-
+    <div className="mt-[141px] md:mt-[137px] mx-12-271   mb-10">
       {step === 1 && (
         <TicketSelection onNext={nextStep} defaultValues={formData} />
       )}

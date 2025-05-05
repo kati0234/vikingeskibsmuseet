@@ -55,5 +55,6 @@ export async function getSingleActivity(slug) {
   });
 
   const data = await response.json();
+  // return data; tror det skal være den pg ok den anden
   return data[0]; // Supabase returnerer et array – vi tager første element
 }
