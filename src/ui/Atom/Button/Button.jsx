@@ -16,40 +16,11 @@ const Button = ({
   iconAndText,
   onClick,
   isLoading = false,
+  isSelected,
   ...props
 }) => {
-  // const [internalLoading, setInternalLoading] = useState(false);
-
-  // const handleClick = (e) => {
-  //   if (disabled || internalLoading) return;
-
-  //   if (isLoading) {
-  //     setInternalLoading(true);
-  //     setTimeout(() => {
-  //       onClick?.(e);
-  //       setInternalLoading(false);
-  //     }, delay);
-  //   } else {
-  //     onClick?.(e);
-  //   }
-  // };
-  // const showSpinner = isLoading && internalLoading;
-
   const [internalLoading, setInternalLoading] = useState(false);
 
-  // const handleClick = (e) => {
-  //   if (disabled || internalLoading) return;
-
-  //   if (isLoading) {
-  //     setInternalLoading(true);
-  //     setTimeout(() => {
-  //       onClick?.(e);
-  //       setInternalLoading(false);
-  //     }, delay);
-  //   } else {
-  //     onClick?.(e);
-  //   }
-  // };
   const handleClick = (e) => {
     if (disabled || internalLoading) return;
 
@@ -63,12 +34,20 @@ const Button = ({
       onClick?.(e);
     }
   };
+
   const showSpinner = isLoading && internalLoading;
 
+  // console.log("Is selected:", isSelected);
   return (
     <button
       className={clsx(
-        buttonStyles({ variant, size, iconAndText, iconOnly }),
+        buttonStyles({
+          variant,
+          size,
+          iconAndText,
+          iconOnly,
+          selected: isSelected,
+        }),
         className
       )}
       disabled={disabled}
@@ -79,7 +58,7 @@ const Button = ({
         <AiOutlineLoading className="animate-spin w-5 h-5 mr-2" />
       )} */}
       {showSpinner && (
-        <AiOutlineLoading className="animate-spin w-5 h-5 mr-2" />
+        <AiOutlineLoading className="animate-spin w-5 h-5 mr-2 " />
       )}
       {iconStart && !showSpinner && <span>{iconStart}</span>}
       {/* {iconStart && <span>{iconStart}</span>} */}

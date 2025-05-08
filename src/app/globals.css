@@ -99,21 +99,6 @@
   }
 }
 
-/* .grid-content-layout {
-  display: grid;
-  gap: 0;
-  grid-template-columns: [start] minmax(16px, 271px) [content] 571px [end] minmax(
-      16px,
-      271px
-    );
-}
-
-@media (max-width: 480px) {
-  .grid-content-layout {
-    grid-template-columns: 16px 1fr 16px;
-  }
-} */
-
 input:-webkit-autofill,
 input:-webkit-autofill:hover,
 input:-webkit-autofill:focus,
@@ -133,4 +118,14 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
+.udstillinger-carousel .swiper-slide {
+  width: 366px;
+}
+
+@media (min-width: 768px) {
+  .udstillinger-carousel .swiper-slide {
+    width: 437px;
+  }
 }

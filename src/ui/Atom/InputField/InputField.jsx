@@ -13,15 +13,13 @@ const InputField = ({
   inputType,
   maxLength,
   onInput,
-  isLoading, // NYT
+  isLoading,
 }) => {
   const { onBlur: rhfOnBlur, onChange, ref, name: inputName } = register(name);
   console.log("error:", error, "success:", success);
   const [isFocused, setIsFocused] = useState(false);
 
   const showError = !isLoading && !isFocused && error;
-  // const showError = isLoading ? false : error;
-
   return (
     <div className="">
       {label && (
@@ -38,7 +36,6 @@ const InputField = ({
         maxLength={maxLength}
         {...register(name)}
         className={inputFieldStyles({
-          // intent: error ? "error" : success ? "success" : "default",
           intent: isLoading
             ? "default"
             : error
@@ -51,7 +48,6 @@ const InputField = ({
           inputType,
         })}
         onFocus={() => setIsFocused(true)}
-        // onBlur={() => setIsFocused(false)}
         onBlur={(e) => {
           rhfOnBlur(e);
           setIsFocused(false);
@@ -63,12 +59,6 @@ const InputField = ({
       {showError && (
         <p className="text-red-500 text-wrap text-sm mt-1">{error.message}</p>
       )}
-      {/* {!isLoading && error && (
-        <p className="text-red-500 text-wrap text-sm mt-1">{error.message}</p>
-      )} */}
-      {/* {error && (
-        <p className="text-red-500 text-wrap text-sm mt-1">{error.message}</p>
-      )} */}
     </div>
   );
 };
