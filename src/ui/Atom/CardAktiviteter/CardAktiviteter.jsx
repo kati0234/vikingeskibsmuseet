@@ -3,7 +3,6 @@ import Image from "next/image";
 
 const CardAktiviteter = ({
   title,
-  image,
   slug,
   description,
   dato,
@@ -15,7 +14,7 @@ const CardAktiviteter = ({
     <div className="flex gap-2   w-[300px] relative ">
       {/* <div className="rounded-xl w-[100px] h-[140px] "> */}
       <Image
-        src={src || "https://picsum.photos/id/12/200/300"}
+        src={src}
         alt={title}
         width={100}
         height={140}

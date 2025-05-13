@@ -1,17 +1,3 @@
-// "use client";
-// import { useEffect, useState } from "react";
-// import Image from "next/image";
-// import Link from "next/link";
-// import { getActivity } from "@/lib/api";
-
-// export default function Aktivitet() {
-//   return (
-//     <div>
-//       <h1 className=" text-9xl text-blue-800 mt-20">enkelt aktivitet</h1>
-//     </div>
-//   );
-// }
-
 import { getSingleActivity } from "@/lib/api"; // justér stien hvis nødvendigt
 import Image from "next/image";
 
@@ -24,10 +10,10 @@ export default async function AktivitetPage({ params }) {
   }
 
   return (
-    <div className="">
+    <div className="pb-12">
       <div className="relative h-[500px] w-full">
         <Image
-          src={aktivitet.image_url}
+          src={aktivitet.image_hero}
           alt="Katinka"
           className="object-cover"
           fill
@@ -37,21 +23,18 @@ export default async function AktivitetPage({ params }) {
           <h1 className="text-2xl md:text-3xl  font-bold uppercase">
             {aktivitet.title}
           </h1>
-          <p className="text-bw-50 text-base">
-            Oplev en guided rundvisning på 45 min.
-          </p>
+          <p className="text-bw-50 text-base">{aktivitet.description}</p>
         </div>
       </div>
       <div className="md:mx-10 pt-6">
         <div className="md:mx-0 mx-3">
           <div className="grid  md:grid-cols-2 gap-3  md:gap-6">
             <h2 className="font-semibold text-[26px]  md:text-right ">
-              Vores omviser dykker ned i historien bag ét af de fem originale
-              vikingeskibe:
+              {aktivitet.h2}
             </h2>
 
             <div>
-              {aktivitet.full_text.split("\n").map((line, index) => (
+              {aktivitet.text_1.split("\n").map((line, index) => (
                 <p key={index} className="mb-4">
                   {line}
                 </p>
@@ -59,9 +42,9 @@ export default async function AktivitetPage({ params }) {
             </div>
           </div>
           <div className="grid  md:grid-cols-2 gap-3  md:gap-6 ">
-            <p className="font-semibold text-[26px] md:text-right  ">
+            <h3 className="font-semibold text-[26px] md:text-right  ">
               Praktisk info
-            </p>
+            </h3>
             <div className="space-y-6">
               <div>
                 <p className="text-xl">Tid</p>
@@ -81,7 +64,7 @@ export default async function AktivitetPage({ params }) {
 
         <div className="grid md:grid-cols-2 gap-6 pt-24">
           {aktivitet.image_1 && (
-            <div className="w-full aspect-[167/111] relative">
+            <div className="w-full aspect-[167/111]  md:rounded-lg relative">
               <Image
                 src={aktivitet.image_1}
                 alt="Katinka"
@@ -91,7 +74,7 @@ export default async function AktivitetPage({ params }) {
             </div>
           )}
           {aktivitet.image_2 && (
-            <div className="w-full aspect-square relative">
+            <div className="w-full aspect-square  md:rounded-lg relative">
               <Image
                 src={aktivitet.image_2}
                 alt="Katinka"
@@ -101,7 +84,7 @@ export default async function AktivitetPage({ params }) {
             </div>
           )}
           {aktivitet.image_3 && (
-            <div className="w-full aspect-[167/188] relative">
+            <div className="w-full aspect-[167/188] md:rounded-lg relative">
               <Image
                 src={aktivitet.image_3}
                 alt="Katinka"
@@ -111,7 +94,7 @@ export default async function AktivitetPage({ params }) {
             </div>
           )}
           {aktivitet.image_4 && (
-            <div className="w-full aspect-[167/94] relative">
+            <div className="w-full aspect-[167/94]  md:rounded-lg relative">
               <Image
                 src={aktivitet.image_4}
                 alt="Katinka"
@@ -121,52 +104,16 @@ export default async function AktivitetPage({ params }) {
             </div>
           )}
         </div>
-
-        {/* <div className="grid grid-cols-2 gap-6">
-          {aktivitet.image_1 && (
+        {aktivitet.image_full && (
+          <div className="w-full aspect-[167/94]  md:rounded-lg relative">
             <Image
-              src={aktivitet.image_1}
+              src={aktivitet.image_full}
               alt="Katinka"
-              width={668}
-              height={444}
+              fill
+              className="object-cover"
             />
-          )}
-          {aktivitet.image_2 && (
-            <Image
-              src={aktivitet.image_2}
-              alt="Katinka"
-              width={668}
-              height={668}
-            />
-          )}
-          {aktivitet.image_3 && (
-            <Image
-              src={aktivitet.image_3}
-              alt="Katinka"
-              width={668}
-              height={752}
-            />
-          )}
-          {aktivitet.image_4 && (
-            <Image
-              src={aktivitet.image_4}
-              alt="Katinka"
-              width={668}
-              height={376}
-            />
-          )}
-        </div> */}
-
-        {/* <div className="flex gap-2 flex-wrap mb-4">
-          {aktivitet.tags?.map((tag, index) => (
-            <span
-              key={index}
-              className="bg-amber-200 rounded-2xl px-3 py-1 text-sm"
-            >
-              {tag}
-            </span>
-          ))}
-        </div> */}
+          </div>
+        )}
       </div>
     </div>
   );

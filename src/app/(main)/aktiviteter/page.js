@@ -52,7 +52,7 @@ export default function Aktiviteter() {
   }
 
   return (
-    <div className="p-10">
+    <div className="p-10 mt-[128px]">
       <h1 className="text-4xl font-semibold uppercase mt-20 mb-4">
         Alle aktiviteter
       </h1>

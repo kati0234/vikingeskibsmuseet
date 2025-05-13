@@ -15,7 +15,7 @@ export const buttonStyles = tv({
       link: "bg-transparent text-bw-950 hover:underline",
     },
     size: {
-      sm: "",
+      header: "text-lg font-semibold",
       md: "px-6 py-3",
       lg: "text-lg",
       as: "p-2",

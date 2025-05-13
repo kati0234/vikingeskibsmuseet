@@ -58,3 +58,26 @@ export async function getSingleActivity(slug) {
   // return data; tror det skal være den pg ok den anden
   return data[0]; // Supabase returnerer et array – vi tager første element
 }
+
+//get udstilinger henter alle udstillinger på overview
+export async function getUdstillinger() {
+  const response = await fetch(`${url}/udstillinger`, {
+    method: "GET",
+    headers: headersList,
+  });
+
+  // husk at slet log
+  const data = await response.json();
+  console.log("GET udstilinger response:", data);
+  return data;
+}
+
+export async function getSingleUdstillinger(slug) {
+  const response = await fetch(`${url}/udstillingerSingel?slug=eq.${slug}`, {
+    method: "GET",
+    headers: headersList,
+  });
+
+  const data = await response.json();
+  return data[0]; // Supabase returnerer et array – vi tager første element
+}

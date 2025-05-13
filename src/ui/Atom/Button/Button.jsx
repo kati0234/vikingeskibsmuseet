@@ -58,7 +58,7 @@ const Button = ({
         <AiOutlineLoading className="animate-spin w-5 h-5 mr-2" />
       )} */}
       {showSpinner && (
-        <AiOutlineLoading className="animate-spin w-5 h-5 mr-2 " />
+        <AiOutlineLoading className="animate-spin w-5 h-5 mr-2  " />
       )}
       {iconStart && !showSpinner && <span>{iconStart}</span>}
       {/* {iconStart && <span>{iconStart}</span>} */}

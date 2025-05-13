@@ -1,37 +1,77 @@
+import LinkButton from "@/ui/Atom/LinkButton/LinkButton";
+
 const FooterMain = () => {
   return (
-    <section className="bg-black p-8 text-background md:grid gap-10 md:grid-cols-[0.1fr_1fr_1fr_1fr_0.1fr] md:grid-rows-[auto_1fr] max-sm:flex max-sm:flex-col py-14">
-      <h1 className="uppercase text-green italic font-Inter font-bold sm:text-xl text-4xl sm:leading-[0.7] lg:leading-[0.7] lg:text-3xl col-start-2">
-        foo <br /> fest
-      </h1>
-      <div className="flex md:row-start-2 sm:col-start-2 sm:col-end-5 justify-between max-sm:flex-col max-sm:gap-8">
+    <div className="py-3 md:py-10 md:px-10 px-3  bg-beige-400 ">
+      <div className="flex  flex-col md:flex-row  gap-14  md:justify-between  ">
         <div>
-          <ul>
-            <li>Guldbergsgade 5, 2300</li>
-            <li>København K</li>
-            <li>+45 84 84 84 84</li>
-            <li>Info@foofest.dk</li>
+          <ul className="space-y-6">
+            <li>
+              <LinkButton
+                href="/praktiskinfo"
+                linkText="Besøg os"
+                variant="simpel"
+                size="no"
+              />
+            </li>
+            <li>
+              <LinkButton
+                href="/udstillinger"
+                linkText="Udstillinger"
+                variant="simpel"
+                size="no"
+              />
+            </li>
+            <li>
+              <LinkButton
+                href="/aktiviteter"
+                linkText="Det sker"
+                variant="simpel"
+                size="no"
+              />
+            </li>
+
+            <li>
+              <LinkButton
+                href="/ommuseet"
+                linkText="Om museet"
+                variant="simpel"
+                size="no"
+              />
+            </li>
           </ul>
         </div>
-        <div className=" flex gap-16 lowercase">
+        <div className=" text-bw-950 flex gap-6 flex-col">
           <div>
-            <ul>
-              <li>ABOUT</li>
-              <li>PROGRAM</li>
-              <li>TICKETS</li>
+            <p className="text-lg font-semibold">ÅBNINGSTIDER</p>
+            <p>Alle dage fra 10.00 - 17.00</p>
+          </div>
+          <div>
+            <p className="text-lg font-semibold">FØLG OS</p>
+            <ul className="text-base">
+              <li className="underline">Instagram</li>
+              <li className="underline">Facebook</li>
+              <li className="underline">LinkedIn</li>
             </ul>
           </div>
           <div>
-            <ul>
-              <li>FAQ</li>
-              <li>TERMS & CONDITIONS</li>
-              <li>PRIVACY POLICY</li>
-              <li>COOKIE POLICY</li>
-            </ul>
+            <p className="text-lg font-semibold">PERSONDATA</p>
+            <p className="underline">Cookies</p>
           </div>
         </div>
       </div>
-    </section>
+      <div className="border-t-[1px] border-bw-600 pt-8 mt-8 flex gap-3 flex-col md:items-center">
+        <div>
+          <p className="font-lg font-semibold">VIKINGESKIBSMUSEET</p>
+        </div>
+
+        <div className="flex gap-1  md:flex-row flex-col md:gap-8">
+          <p>Vindeboder 12, 4000 Roskilde</p>
+          <p>museum@vikingeskibsmuseet.dk</p>
+          <p>+45 46 300 200</p>
+        </div>
+      </div>
+    </div>
   );
 };
 
