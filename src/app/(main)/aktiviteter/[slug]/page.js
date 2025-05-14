@@ -1,4 +1,6 @@
 import { getSingleActivity } from "@/lib/api"; // justér stien hvis nødvendigt
+import BuyTicketSection from "@/ui/Molekyle/BuyTicketSection/BuyTicketSection";
+import UdstillingerCarousel from "@/ui/Molekyle/Swiper/UdstillingerCarosel";
 import Image from "next/image";
 
 export default async function AktivitetPage({ params }) {
@@ -10,17 +12,19 @@ export default async function AktivitetPage({ params }) {
   }
 
   return (
-    <div className="pb-12">
+    <div className="pb-12 mt-[128px] md:mt-[160px]">
       <div className="relative h-[500px] w-full">
         <Image
           src={aktivitet.image_hero}
           alt="Katinka"
           className="object-cover"
           fill
+          priority
+          sizes="(max-width: 1960px) 100vw, 5760px"
         />
 
         <div className="absolute bottom-0 left-0  text-bw-50 p-4">
-          <h1 className="text-2xl md:text-3xl  font-bold uppercase">
+          <h1 className="text-2xl md:text-[32px]  font-semibold uppercase">
             {aktivitet.title}
           </h1>
           <p className="text-bw-50 text-base">{aktivitet.description}</p>
@@ -64,57 +68,68 @@ export default async function AktivitetPage({ params }) {
 
         <div className="grid md:grid-cols-2 gap-6 pt-24">
           {aktivitet.image_1 && (
-            <div className="w-full aspect-[167/111]  md:rounded-lg relative">
+            <div className="w-full aspect-[167/111] overflow-hidden  md:rounded-lg relative">
               <Image
                 src={aktivitet.image_1}
                 alt="Katinka"
                 fill
                 className="object-cover"
+                sizes="(max-width: 960px) 100vw, 5760px"
               />
             </div>
           )}
           {aktivitet.image_2 && (
-            <div className="w-full aspect-square  md:rounded-lg relative">
+            <div className="w-full aspect-square overflow-hidden  md:rounded-lg relative">
               <Image
                 src={aktivitet.image_2}
                 alt="Katinka"
                 fill
                 className="object-cover"
+                sizes="(max-width: 960px) 100vw, 5760px"
               />
             </div>
           )}
           {aktivitet.image_3 && (
-            <div className="w-full aspect-[167/188] md:rounded-lg relative">
+            <div className="w-full aspect-[167/188] overflow-hidden md:rounded-lg relative">
               <Image
                 src={aktivitet.image_3}
                 alt="Katinka"
                 fill
                 className="object-cover"
+                sizes="(max-width: 960px) 100vw, 5760px"
               />
             </div>
           )}
           {aktivitet.image_4 && (
-            <div className="w-full aspect-[167/94]  md:rounded-lg relative">
+            <div className="w-full aspect-[167/94] overflow-hidden  md:rounded-lg relative">
               <Image
                 src={aktivitet.image_4}
                 alt="Katinka"
                 fill
                 className="object-cover"
+                sizes="(max-width: 960px) 100vw, 5760px"
               />
             </div>
           )}
         </div>
         {aktivitet.image_full && (
-          <div className="w-full aspect-[167/94]  md:rounded-lg relative">
+          <div className="w-full aspect-[167/94] overflow-hidden  md:rounded-lg relative">
             <Image
               src={aktivitet.image_full}
               alt="Katinka"
               fill
               className="object-cover"
+              sizes="(max-width: 960px) 100vw, 5760px"
             />
           </div>
         )}
       </div>
+      <h4 className="font-semibold text-[26px] mx-3 md:mx-10 uppercase pt-[64px]">
+        Se også
+      </h4>
+
+      <UdstillingerCarousel />
+      <BuyTicketSection />
     </div>
   );
 }

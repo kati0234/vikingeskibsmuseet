@@ -38,7 +38,7 @@ const BilletInfo = ({}) => {
         <p>Grupperabat kan kun opnås ved henvendelse i billetsalg på museet.</p>
       </div>
       <LinkButton
-        href="/billeter"
+        href="/billetter"
         variant="blue"
         linkText="Køb billetter"
         ticketIcon

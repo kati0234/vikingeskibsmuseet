@@ -46,7 +46,7 @@ export default function ActivitiesCarousel() {
 
   return (
     <div className="w-full flex items-center justify-center gap-3 md:gap-6 bg-blue-700 flex-col py-12 px-4">
-      <h2 className="text-beige-500 font-semibold text-2xl uppercase">
+      <h2 className="text-beige-500 font-semibold text-2xl md:text-[32px] uppercase">
         Aktiviteter
       </h2>
       <div className="md:w-[600px] w-full relative">

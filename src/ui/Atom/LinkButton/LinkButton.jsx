@@ -3,6 +3,7 @@ import { LuMoveRight } from "react-icons/lu";
 import { LuTicket } from "react-icons/lu";
 import { linkButtonStyles } from "./LinkButton.styles";
 import { clsx } from "clsx";
+import { LuHouse } from "react-icons/lu";
 
 const LinkButton = ({
   linkText,
@@ -12,6 +13,7 @@ const LinkButton = ({
   variant,
   size,
   className,
+  houseIcon,
   ...props
 }) => {
   return (
@@ -21,8 +23,11 @@ const LinkButton = ({
       {...props}
     >
       {ticketIcon && <LuTicket className="text-bw-50  w-[24px] h-[24px]" />}
+      {houseIcon && <LuHouse className="text-current  w-[24px] h-[24px]" />}
       <p className="font-medium ">{linkText}</p>
-      {icon && <LuMoveRight className="text-bw-50 w-[24px] h-[24px]" />}
+      {icon && (
+        <LuMoveRight className="text-bw-50 w-[24px] h-[24px] hover:scale-110 transition" />
+      )}
     </Link>
   );
 };

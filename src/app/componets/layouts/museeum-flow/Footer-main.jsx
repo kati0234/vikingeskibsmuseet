@@ -49,9 +49,36 @@ const FooterMain = () => {
           <div>
             <p className="text-lg font-semibold">FØLG OS</p>
             <ul className="text-base">
-              <li className="underline">Instagram</li>
-              <li className="underline">Facebook</li>
-              <li className="underline">LinkedIn</li>
+              <li>
+                <a
+                  href="https://www.instagram.com/vikingshipmuseum/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline"
+                >
+                  Instagram
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.facebook.com/Vikingeskibsmuseet/?locale=da_DK"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline"
+                >
+                  Facebook
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://www.linkedin.com/company/vikingeskibsmuseet"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="underline"
+                >
+                  LinkedIn
+                </a>
+              </li>
             </ul>
           </div>
           <div>
@@ -67,8 +94,16 @@ const FooterMain = () => {
 
         <div className="flex gap-1  md:flex-row flex-col md:gap-8">
           <p>Vindeboder 12, 4000 Roskilde</p>
-          <p>museum@vikingeskibsmuseet.dk</p>
-          <p>+45 46 300 200</p>
+          <a
+            href="mailto:museum@vikingeskibsmuseet.dk"
+            className="text-nowrap  hover:underline"
+          >
+            museum@vikingeskibsmuseet.dk
+          </a>
+
+          <a href="tel:+4546300200" className="hover:underline text-nowrap">
+            +45 46 300 200
+          </a>
         </div>
       </div>
     </div>

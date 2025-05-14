@@ -1,5 +1,6 @@
 import ActivitiesSection from "@/ui/Molekyle/ActivitiesSection/ActivitiesSection";
 import BilletInfo from "@/ui/Molekyle/BilletInfo/BilletInfo";
+import HeroVideo from "@/ui/Molekyle/Herovideo/HeroVideo";
 import OpeningHours from "@/ui/Molekyle/OpeningHours/OpeningHours";
 import ActivitiesCarousel from "@/ui/Molekyle/Swiper/ActivitiesCarousel";
 import UdstillingerCarousel from "@/ui/Molekyle/Swiper/UdstillingerCarosel";
@@ -9,22 +10,8 @@ import Link from "next/link";
 export default function Home() {
   return (
     <div className="flex  flex-col gap-[32px] row-start-2 items-center sm:items-start">
-      <div className="relative h-[748px] w-full">
-        <Image
-          src="/assets/images/test.png"
-          alt="Katinka"
-          className="object-cover"
-          fill
-          priority
-          sizes="(max-width: 1640px) 100vw, (max-width: 768px) 50vw, 33vw"
-        />
+      <HeroVideo />
 
-        <div className="absolute bottom-0 left-0  text-bw-50 px-4 py-16">
-          <h1 className="text-2xl md:text-5xl  font-bold uppercase">
-            DYK NED I VIKINGETIDEN MED EN DAG PÅ VIKINGESKIBSMUSEET
-          </h1>
-        </div>
-      </div>
       <div className="flex items-center w-full flex-row justify-center">
         <p className="text-center max-w-[538px] text-lg md:text-[32px] font-semibold">
           5 vikingeskibe. 1.000 års historie. Daglige rundvisninger og sejlture.
@@ -34,17 +21,18 @@ export default function Home() {
 
       <ActivitiesSection />
 
-      <h2 className="text-2xl md:text-5xl px-3 md:px-10  pt-16 font-bold uppercase">
+      <h2 className=" text-2xl md:text-[32px]  px-3 md:px-10  pt-16 font-bold uppercase">
         UDSTILLINGER
       </h2>
 
       <UdstillingerCarousel />
       <div className="grid md:grid-cols-2 mx-3 md:mx-10 pb-16">
-        <div></div>
+        <div>
+          <h2 className="pb-6 font-semibold text-2xl md:text-[32px]">OM OS</h2>
+        </div>
         <div>
           <div className="flex flex-col space-y-14 max-w-[668px] ">
             <div>
-              <p className="pb-6 font-semibold text-5xl">OM OS</p>
               <p className="text-base pb-4">
                 Vikingeskibsmuseet i Roskilde er Danmarks museum for skibe,
                 søfart og bådebygningskultur i oldtid og middelalder. Den ældste
@@ -70,15 +58,17 @@ export default function Home() {
       </div>
       <ActivitiesCarousel />
       <div className="grid md:grid-cols-2 mx-3 md:mx-10 pt-16">
-        <h3 className="font-semibold text-[32px]">PRAKTISK INFORMATION</h3>
+        <h2 className="font-semibold text-2xl md:text-[32px]">
+          PRAKTISK INFORMATION
+        </h2>
 
         <div className="flex flex-col text-xl space-y-14 pb-16 ">
           <div>
-            <p className="text-xl font-semibold pb-3">ADRESSE</p>
+            <h3 className="text-xl  font-semibold pb-3">ADRESSE</h3>
             <p>Vindeboder 12, 4000 Roskilde</p>
           </div>
           <div>
-            <p className="pb-6 font-semibold">ÅBNINGSTIDER</p>
+            <h3 className="pb-6 font-semibold">ÅBNINGSTIDER</h3>
             <OpeningHours />
           </div>
           <BilletInfo />

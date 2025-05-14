@@ -1,4 +1,6 @@
 import { getSingleUdstillinger } from "@/lib/api"; // justér stien hvis nødvendigt
+import BuyTicketSection from "@/ui/Molekyle/BuyTicketSection/BuyTicketSection";
+import UdstillingerCarousel from "@/ui/Molekyle/Swiper/UdstillingerCarosel";
 import Image from "next/image";
 
 export default async function SingelUdstillinger({ params }) {
@@ -10,17 +12,19 @@ export default async function SingelUdstillinger({ params }) {
   }
 
   return (
-    <div className="">
-      <div className="relative h-[500px] w-full">
+    <div className="mb-16">
+      <div className="relative h-[500px] mt-[150px] w-full">
         <Image
           src={udstilling.image_hero}
           alt="Katinka"
           className="object-cover"
           fill
+          priority
+          sizes="(max-width: 1960px) 100vw, 5760px"
         />
 
         <div className="absolute bottom-0 left-0  text-bw-50 p-4">
-          <h1 className="text-2xl md:text-3xl  font-bold uppercase">
+          <h1 className="text-2xl md:text-[32px]   font-semibold uppercase">
             {udstilling.title}
           </h1>
           <p className="text-bw-50 text-base">{udstilling.titledescription}</p>
@@ -43,22 +47,24 @@ export default async function SingelUdstillinger({ params }) {
 
         <div className="grid md:grid-cols-2 gap-6  md:mx-10">
           {udstilling.image_1 && (
-            <div className="w-full aspect-[167/111]  md:rounded-lg relative">
+            <div className="w-full aspect-[167/111] overflow-hidden  md:rounded-lg relative">
               <Image
                 src={udstilling.image_1}
                 alt="Katinka"
                 fill
                 className="object-cover"
+                sizes="(max-width: 960px) 100vw, 5760px"
               />
             </div>
           )}
           {udstilling.image_2 && (
-            <div className="w-full aspect-square  md:rounded-lg relative">
+            <div className="w-full aspect-square overflow-hidden  md:rounded-lg relative">
               <Image
                 src={udstilling.image_2}
                 alt="Katinka"
                 fill
                 className="object-cover"
+                sizes="(max-width: 960px) 100vw, 5760px"
               />
             </div>
           )}
@@ -78,22 +84,24 @@ export default async function SingelUdstillinger({ params }) {
         </div>
         <div className="grid md:grid-cols-2 gap-6  md:mx-10">
           {udstilling.image_3 && (
-            <div className="w-full aspect-[167/188]  md:rounded-lg relative">
+            <div className="w-full aspect-[167/188] overflow-hidden  md:rounded-lg relative">
               <Image
                 src={udstilling.image_3}
                 alt="Katinka"
                 fill
                 className="object-cover"
+                sizes="(max-width: 960px) 100vw, 5760px"
               />
             </div>
           )}
           {udstilling.image_4 && (
-            <div className="w-full aspect-[167/94]  md:rounded-lg relative">
+            <div className="w-full aspect-[167/94] overflow-hidden  md:rounded-lg relative">
               <Image
                 src={udstilling.image_4}
                 alt="Katinka"
                 fill
                 className="object-cover"
+                sizes="(max-width: 960px) 100vw, 5760px"
               />
             </div>
           )}
@@ -114,27 +122,34 @@ export default async function SingelUdstillinger({ params }) {
         </div>
         <div className="grid md:grid-cols-2 gap-6 md:mx-10">
           {udstilling.image_5 && (
-            <div className="w-full  md:rounded-lg aspect-[167/111] relative">
+            <div className="w-full  md:rounded-lg  overflow-hidden aspect-[167/111] relative">
               <Image
                 src={udstilling.image_5}
                 alt="Katinka"
                 fill
+                sizes="(max-width: 960px) 100vw, 5760px"
                 className="object-cover"
               />
             </div>
           )}
           {udstilling.image_6 && (
-            <div className="w-full aspect-square md:rounded-lg  relative">
+            <div className="w-full aspect-square overflow-hidden md:rounded-lg  relative">
               <Image
                 src={udstilling.image_6}
                 alt="Katinka"
                 fill
+                sizes="(max-width: 960px) 100vw, 5760px"
                 className="object-cover"
               />
             </div>
           )}
         </div>
       </div>
+      <h5 className="font-semibold text-[26px] mx-3 md:mx-10 uppercase pt-[64px]">
+        Se også
+      </h5>
+      <UdstillingerCarousel />
+      <BuyTicketSection />
     </div>
   );
 }

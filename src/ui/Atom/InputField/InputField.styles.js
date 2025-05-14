@@ -1,15 +1,12 @@
 import { tv } from "tailwind-variants";
 
 export const inputFieldStyles = tv({
-  base: "w-full px-3 py-2 border rounded-lg text-base transition  !bg-bw-50 autofill:bg-bw-50  focus:outline-none focus:ring-2  focus:ring-bw-950",
+  base: "w-full px-3 py-2 border rounded-lg text-base transition focus:border-blue-400 active:border-blue-400 !bg-bw-50 autofill:bg-bw-50  focus:outline-none   ",
   variants: {
     intent: {
       default: "border-bw-600",
-      error:
-        "border-error ring-bw-500 focus:ring-bw-500 focus:border-bw-950 active:border-black",
-      success:
-        "border-success   ring-bw-500 focus:ring-bw-500 focus:border-bw-950   ",
-      focus: "",
+      error: "border-error",
+      success: "border-success",
     },
     readOnly: {
       true: "bg-gray-200 cursor-not-allowed", // Readonly style
@@ -33,3 +30,4 @@ export const inputFieldStyles = tv({
     inputType: "text",
   },
 });
+// ring-bw-500 focus:ring-bw-500

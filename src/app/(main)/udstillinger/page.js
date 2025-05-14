@@ -19,7 +19,7 @@ export default function Udstillinger() {
   }, []);
 
   return (
-    <div className="relative h-[500px] md:h-[700px] mt-[110px] md:mt-[129px] w-full overflow-hidden">
+    <div className="relative h-[500px] md:h-[700px] mt-[110px] md:mt-[150px] w-full overflow-hidden">
       {/* Alle billeder med smooth skift */}
       {udstillinger.map((udstilling) => (
         <Image
@@ -38,7 +38,7 @@ export default function Udstillinger() {
       ))}
 
       {/* Tekstlinks */}
-      <div className="relative z-20 md:p-20 mx-3 pt-12 flex gap-3 justify-center flex-col text-white">
+      <div className="relative z-20 md:px-20 md:pt-30 mx-3 pt-30 flex gap-3 justify-center flex-col text-white">
         {udstillinger.map((udstilling) => (
           <p
             key={udstilling.slug}

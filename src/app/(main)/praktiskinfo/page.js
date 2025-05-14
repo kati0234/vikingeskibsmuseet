@@ -1,15 +1,18 @@
 import MyDisclosure from "@/ui/Atom/Disclosure/Disclosure";
 import LinkButton from "@/ui/Atom/LinkButton/LinkButton";
 import BilletInfo from "@/ui/Molekyle/BilletInfo/BilletInfo";
+import BuyTicketSection from "@/ui/Molekyle/BuyTicketSection/BuyTicketSection";
 import OpeningHours from "@/ui/Molekyle/OpeningHours/OpeningHours";
 import Image from "next/image";
 import { GoStarFill } from "react-icons/go";
 
 export default function PraktiskInfoPage() {
   return (
-    <div className="flex  flex-col gap-11 mt-[130px] py-10 mx-3 md:mx-10">
+    <div className="flex  flex-col mb-16 gap-11 mt-[150px] py-10 mx-3 md:mx-10">
       <div>
-        <h1 className="  text-4xl font-semibold ">Planlæg dit besøg</h1>
+        <h1 className=" uppercase text-4xl font-semibold pt-6 md:pt-10 ">
+          Planlæg dit besøg
+        </h1>
         <p>Find vores åbningstider og køb billetter</p>
       </div>
       <div>
@@ -30,7 +33,7 @@ export default function PraktiskInfoPage() {
           <LinkButton
             size="sm"
             href="#Transport"
-            linkText="Transport"
+            linkText="Transport & parkering"
             variant="simpel"
           />
           <LinkButton
@@ -42,10 +45,15 @@ export default function PraktiskInfoPage() {
           <LinkButton
             size="sm"
             href="#Caféknarr"
-            linkText="Caféknarr"
+            linkText="Café Knarr"
             variant="simpel"
           />
-          <LinkButton size="sm" href="#faq" linkText="faq" variant="simpel" />
+          <LinkButton
+            size="sm"
+            href="#faq"
+            linkText="Ofte stillede spørgsmål"
+            variant="simpel"
+          />
         </div>
         <div className="relative w-full overflow-hidden h-[468px] rounded-lg  md:mx-0 ">
           <Image
@@ -54,6 +62,7 @@ export default function PraktiskInfoPage() {
             alt="billed af vikinge skib"
             sizes="(max-width: 1608px) 100vw, 668px"
             className="object-cover"
+            priority
           />
         </div>
       </div>
@@ -61,7 +70,7 @@ export default function PraktiskInfoPage() {
         id="Billetpriser"
         className="flex justify-between md:flex-row flex-col scroll-mt-[130px]  w-full border-b-1 border-bw-600 py-20"
       >
-        <h2 className="text-3xl font-semibold pb-6">Billetpriser</h2>
+        <h2 className="text-3xl font-semibold pb-6 uppercase">Billetpriser</h2>
         <div>
           <p className="pb-6">
             Billetter til Vikingeskibsmuseet kan købes på forhånd eller i
@@ -74,7 +83,7 @@ export default function PraktiskInfoPage() {
         id="åbningstider"
         className="flex md:flex-row flex-col  justify-between scroll-mt-[130px] w-full border-b-1 border-bw-600 py-20"
       >
-        <h2 className="text-3xl font-semibold pb-6">Åbningstider</h2>
+        <h2 className="text-3xl font-semibold pb-6 uppercase">Åbningstider</h2>
         <div>
           <p className="pb-6">Museet er åbent alle ugens dage hele året.</p>
           <OpeningHours />
@@ -84,7 +93,9 @@ export default function PraktiskInfoPage() {
         id="Transport"
         className="flex justify-between md:flex-row flex-col scroll-mt-[130px] w-full border-b-1 border-bw-600 py-20"
       >
-        <h2 className="text-3xl font-semibold pb-6">Transport & parkering</h2>
+        <h2 className="text-3xl font-semibold pb-6 uppercase">
+          Transport & parkering
+        </h2>
         <div className="space-y-6 md:w-[668px] ">
           <div>
             <p className="text-lg font-semibold uppercase">Adresse</p>
@@ -121,7 +132,7 @@ export default function PraktiskInfoPage() {
         className=" w-full border-b-1 border-bw-600 py-20 scroll-mt-[130px] text-bw-50 "
       >
         <div className="bg-blue-500 rounded-lg  p-6">
-          <h2 className="text-3xl font-semibold pb-6  ">
+          <h2 className="text-3xl font-semibold pb-6  uppercase ">
             Hvad siger andre om os
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -192,7 +203,7 @@ export default function PraktiskInfoPage() {
         id="Caféknarr"
         className="flex md:flex-row flex-col scroll-mt-[130px] justify-between w-full border-b-1 border-bw-600 py-20"
       >
-        <h2 className="text-3xl font-semibold pb-6 ">Café knarr</h2>
+        <h2 className="text-3xl font-semibold pb-6 uppercase ">Café knarr</h2>
         <div className="w-full md:w-[668px] space-y-6">
           <div className="aspect-[3/2] rounded-lg overflow-hidden relative">
             <Image
@@ -208,6 +219,9 @@ export default function PraktiskInfoPage() {
             du nyde velsmagende frokostanretninger, desserter, kaffe og andre
             gode drikkevarer med udsigt til Vinterhaven.
           </p>
+          <div className="bg-blue-500 px-6 py-4 rounded-4xl hover:bg-blue-800 cursor-not-allowed text-bw-50 h-fit w-fit">
+            <p>Læs mere</p>
+          </div>
         </div>
       </section>
 
@@ -215,30 +229,88 @@ export default function PraktiskInfoPage() {
         id="faq"
         className="flex justify-between md:flex-row flex-col scroll-mt-[130px]  w-full border-b-1 border-bw-600 py-20"
       >
-        <h2 className="text-3xl font-semibold pb-6">Ofte stillede spørgsmål</h2>
+        <h2 className="text-3xl font-semibold pb-6 uppercase">
+          Ofte stillede spørgsmål
+        </h2>
         <div className=" md:w-[668px] space-y-6">
-          <MyDisclosure
-            question="Kan jeg få opbevaret min bagage?"
-            answer="I kælderen i Vikingeskibshallen er der mulighed for at opbevare tasker/bagage i aflåste bokse. Det er gratis at låne en boks, mod et depositum på 10,00 kr."
-          />
-          <MyDisclosure
-            question="Må jeg fotografere på Vikingeskibsmuseet?"
-            answer="Vikingeskibsmuseets gæster er velkomne til at fotografere og filme til privat brug (fx feriefotos, fotos du deler på internettet etc.). Ønsker du at dele dine billeder med os eller andre besøgende, kan du tagge dem med #Vikingeskibsmuseet eller #VikingShipMuseum."
-          />
-          <MyDisclosure
-            question="Hvor kan jeg spise medbragt mad?"
-            answer="Medbragt mad kan nydes udendørs ved bordene på Museumsøen eller på plænen omkring museet."
-          />
-          <MyDisclosure
-            question="Kan jeg have min barnevogn med?"
-            answer="Barnevogne er velkomne, der er dog begrænset adgang i Vikingeskibshallen grundet de mange trapper. Kontakt Informationen ved ankomst for at få adgang til Vikingeskibshallen med barnevogn."
-          />
-          <MyDisclosure
-            question="Må jeg tage min hund med?"
-            answer="Hunde er velkomne på museets udendørsarealer, men må ikke medbringes i Vikingeskibshallen."
-          />
+          <MyDisclosure question="Hvad koster det at komme ind på Vikingeskibsmuseet?">
+            <p>
+              Børn under 18 år kan komme ind gratis. Vokse koster 160 kr. men
+              kan variere efter vores tilbud.
+            </p>
+          </MyDisclosure>
+          <MyDisclosure question="Må jeg komme ind med presse kort?">
+            <p>
+              Journalister med gyldigt pressekort har gratis adgang til museet,
+              hvis besøget er arbejdsrelateret.
+            </p>
+            <p>
+              Har du som journalist ikke pressekort, men et relevant ærinde på
+              museet, bedes du kontakte Museumsdirektør, Tinna Damgård-Sørensen.
+            </p>
+          </MyDisclosure>
+          <MyDisclosure question="Kan man komme rund med kørestol eller barnevogn?">
+            <p>
+              Kontakt informationen ved ankomst for at få adgang til
+              Vikingeskibshallen i kørestol. Der er begrænset adgang til
+              Vikingeskibshallen for gæster i kørestol grundet
+              Vikingeskibshallens mange trapper.
+            </p>
+            <p>
+              Museumsøen og - havnen er tilgængelig for kørestolsbrugere og
+              her findes et handicaptoilet.
+            </p>
+          </MyDisclosure>
+          <MyDisclosure question="Kan jeg få opbevaret min bagage?">
+            <p>
+              I kælderen i Vikingeskibshallen er der mulighed for at opbevare
+              tasker/bagage i aflåste bokse. Det er gratis at låne en boks, mod
+              et depositum på 10,00 kr.
+            </p>
+          </MyDisclosure>
+          <MyDisclosure question="Kan jeg medbringe egen madpakke?">
+            <p>
+              Medbragt mad kan nydes udendørs ved bordene på Museumsøen eller på
+              plænen omkring museet.
+            </p>
+          </MyDisclosure>
+          <MyDisclosure question="Må jeg tage billeder på museet?">
+            <p>
+              Vikingeskibsmuseets gæster er velkomne til at fotografere og filme
+              til privat brug (fx feriefotos, fotos du deler på internettet
+              etc.). Ønsker du at dele dine billeder med os eller andre
+              besøgende, kan du tagge dem med #Vikingeskibsmuseet eller
+              #VikingShipMuseum.
+            </p>
+            <p className="font-medium">Læs mere om vores regler her</p>
+          </MyDisclosure>
+
+          <MyDisclosure question="Andre spørgsmål?">
+            <p>
+              Du er velkommen til at kontakte os på{" "}
+              <a
+                href="mailto:museum@vikingeskibsmuseet.dk"
+                className=" px-1 text-nowrap  underline"
+              >
+                museum@vikingeskibsmuseet.dk
+              </a>
+              eller på
+              <a href="tel:+4546300200" className="px-1 underline text-nowrap">
+                tlf. +45 46 300 200
+              </a>
+              (Telefontid mandag-fredag: kl. 10.00 - 17.00).
+            </p>
+            <p className="pt-3">
+              Læs mere under
+              <a href="#åbningstider" className=" underline">
+                Åbningstider
+              </a>
+              .
+            </p>
+          </MyDisclosure>
         </div>
       </section>
+      <BuyTicketSection />
     </div>
   );
 }

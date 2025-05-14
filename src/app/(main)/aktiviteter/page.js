@@ -10,6 +10,7 @@ import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
 import TextField from "@mui/material/TextField";
 import dayjs from "dayjs";
 import "dayjs/locale/da";
+import BuyTicketSection from "@/ui/Molekyle/BuyTicketSection/BuyTicketSection";
 
 // gør at dator bliver danske
 dayjs.locale("da");
@@ -52,7 +53,7 @@ export default function Aktiviteter() {
   }
 
   return (
-    <div className="p-10 mt-[128px]">
+    <div className="p-10 mt-[128px] mb-16">
       <h1 className="text-4xl font-semibold uppercase mt-20 mb-4">
         Alle aktiviteter
       </h1>
@@ -131,7 +132,7 @@ export default function Aktiviteter() {
       </div>
 
       {/* Viser hver dag, også uden events */}
-      <div className="space-y-16 pt-12 md:pt-[100px]">
+      <div className="space-y-16 pt-12 pb-10 md:pt-[100px]">
         {allDates.map((dato) => {
           const dateStr = dato
             .format("dddd D. MMMM YYYY", { locale: "da" })
@@ -170,6 +171,7 @@ export default function Aktiviteter() {
           );
         })}
       </div>
+      <BuyTicketSection />
     </div>
   );
 }

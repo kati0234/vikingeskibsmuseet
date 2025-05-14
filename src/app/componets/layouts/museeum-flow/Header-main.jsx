@@ -40,21 +40,6 @@ const HeaderMain = () => {
 
   const sections = [
     {
-      name: "Det Sker",
-      key: "aktiviteter",
-      links: [
-        { name: "Kalender", href: "/aktiviteter" },
-        { name: "Arrangementer" },
-        { name: "Nyt museum" },
-        { name: "Presse" },
-      ],
-    },
-    {
-      name: "Udstillinger",
-      key: "udstillinger",
-      href: "/udstillinger",
-    },
-    {
       name: "Besøg os",
       key: "visitUs",
       links: [
@@ -68,6 +53,21 @@ const HeaderMain = () => {
         { name: "For familien & børn" },
         { name: "For skoler" },
         { name: "For grupper & virksomheder" },
+      ],
+    },
+    {
+      name: "Udstillinger",
+      key: "udstillinger",
+      href: "/udstillinger",
+    },
+    {
+      name: "Det Sker",
+      key: "aktiviteter",
+      links: [
+        { name: "Kalender", href: "/aktiviteter" },
+        { name: "Arrangementer" },
+        { name: "Nyt museum" },
+        { name: "Presse" },
       ],
     },
     {
@@ -225,10 +225,10 @@ const HeaderMain = () => {
             {/* Buy Ticket Button - Hidden on mobile when menu is open */}
             {!isMobileMenuOpen && (
               <LinkButton
-                linkText="køb"
+                linkText="Køb billetter"
                 ticketIcon
                 variant="blue"
-                href="/billeter"
+                href="/billetter"
                 className="hidden md:flex"
               />
             )}
@@ -325,7 +325,7 @@ const HeaderMain = () => {
                     linkText="køb billet"
                     ticketIcon
                     variant="blue"
-                    href="/billeter"
+                    href="/billetter"
                     onClick={handleLinkClick}
                   />
                 </div>
@@ -386,7 +386,7 @@ const HeaderMain = () => {
                         title="OPSLUGT AF HAVET"
                         src="/assets/images/udstillingskort/opslugtafhavet_card.webp"
                         description="- to skibe, der aldrig nåede havn"
-                        linkText="Læs mere & køb billet"
+                        linkText="Læs mere"
                         href="/udstillinger/opslugtafhavet"
                       />
                     </motion.div>

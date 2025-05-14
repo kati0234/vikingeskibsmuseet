@@ -10,7 +10,7 @@ export default function Breadcrumbs() {
 
   return (
     <div className="text-sm text-bw-950 ">
-      <ul className="flex items-center justify-center">
+      <ul className="flex md:flex-nowrap flex-wrap items-center md:justify-center">
         <li>
           <Link href="/" className=" hover:underline">
             Forside
@@ -24,7 +24,7 @@ export default function Breadcrumbs() {
           );
 
           return (
-            <li key={path} className="flex items-center">
+            <li key={path} className="flex  items-center">
               <span className="mx-1 ">
                 <LuDot className="w-5 h-5" />
               </span>

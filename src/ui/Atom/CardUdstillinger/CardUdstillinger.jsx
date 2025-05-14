@@ -4,7 +4,7 @@ import { LuMoveRight } from "react-icons/lu";
 
 const CardUdstillinger = ({ title, src, linkText, href, description }) => {
   return (
-    <div className="flex gap-2 text-beige-200  max-w-[366px] h-[452px] md:max-h-[573px] group rounded-2xl md:w-[437px] overflow-hidden relative ">
+    <div className="flex gap-2 text-beige-200  max-w-[366px] h-[452px] md:h-[573px] group rounded-2xl md:max-w-[437px] overflow-hidden relative ">
       <div className="absolute inset-0">
         <Image
           src={src || "https://picsum.photos/id/12/200/300"}
@@ -23,7 +23,7 @@ const CardUdstillinger = ({ title, src, linkText, href, description }) => {
           <p className="md:text-xl text-base">{description}</p>
         </div>
         <LinkButton
-          className="justify-normal"
+          className="justify-normal "
           href={href}
           linkText={linkText}
           icon
