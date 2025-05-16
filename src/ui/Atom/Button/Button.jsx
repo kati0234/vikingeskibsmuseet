@@ -1,3 +1,4 @@
+"use client";
 import clsx from "clsx";
 import { buttonStyles } from "./Button.styles";
 import { AiOutlineLoading } from "react-icons/ai";

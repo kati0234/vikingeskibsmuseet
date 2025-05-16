@@ -18,7 +18,7 @@ export async function postTicket(ticket) {
   });
 
   const data = await response.json();
-  console.log("POST response:", data);
+  // console.log("POST response:", data);
   return data;
 }
 
@@ -31,7 +31,7 @@ export async function patchTicket(id, patchData) {
   });
 
   const data = await response.json();
-  console.log("PATCH response:", data);
+  // console.log("PATCH response:", data);
   return data;
 }
 
@@ -43,7 +43,7 @@ export async function getActivity() {
   });
 
   const data = await response.json();
-  console.log("GET activity response:", data);
+  // console.log("GET activity response:", data);
   return data;
 }
 //get aktiviteter henter singel aktivet
@@ -68,7 +68,7 @@ export async function getUdstillinger() {
 
   // husk at slet log
   const data = await response.json();
-  console.log("GET udstilinger response:", data);
+  // console.log("GET udstilinger response:", data);
   return data;
 }
 
@@ -80,4 +80,31 @@ export async function getSingleUdstillinger(slug) {
 
   const data = await response.json();
   return data[0]; // Supabase returnerer et array – vi tager første element
+}
+
+// export async function postNewsletter(email) {
+//   const response = await fetch(`${url}/newsletter`, {
+//     method: "POST",
+//     headers: headersList,
+//     body: JSON.stringify({ email }), // Send som objekt
+//   });
+
+//   return await response.json(); // Returnér altid JSON – selv ved fejl
+// }
+
+export function postNewsletter(email) {
+  return fetch(`${url}/newsletter`, {
+    method: "POST",
+    headers: headersList,
+    body: JSON.stringify({ email }),
+  }).then((response) => {
+    if (!response.ok) {
+      return response.json().then((errorData) => {
+        const error = new Error(errorData.message || "Fejl ved tilmelding");
+        error.status = response.status;
+        throw error;
+      });
+    }
+    return response.json();
+  });
 }

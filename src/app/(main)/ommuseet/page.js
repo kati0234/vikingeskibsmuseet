@@ -1,5 +1,7 @@
 import LinkButton from "@/ui/Atom/LinkButton/LinkButton";
 import BuyTicketSection from "@/ui/Molekyle/BuyTicketSection/BuyTicketSection";
+import NewsSection from "@/ui/Molekyle/NewsSection/NewsSection";
+import NewsSignup from "@/ui/Molekyle/NewsSection/NewsSignup";
 import Image from "next/image";
 
 export default function OmMuseetPage() {
@@ -118,14 +120,16 @@ export default function OmMuseetPage() {
                 className="object-cover"
               />
             </div>
-            <p className="py-4">Se vores åbningstider og billetpriser.</p>
-            <LinkButton
-              href="/praktiskinfo"
-              variant="blue"
-              className="w-fit"
-              linkText="Læs mere"
-              icon
-            />
+            <div className="md:mx-10 mx-3">
+              <p className="py-4 ">Se vores åbningstider og billetpriser.</p>
+              <LinkButton
+                href="/praktiskinfo"
+                variant="blue"
+                className="w-fit"
+                linkText="Læs mere"
+                icon
+              />
+            </div>
           </div>
           <div className="flex flex-col ">
             <div className="w-full aspect-[167/94] overflow-hidden  md:rounded-lg relative">
@@ -137,19 +141,25 @@ export default function OmMuseetPage() {
                 className="object-cover"
               />
             </div>
-            <p className="py-4">
-              Vil du besøge museet med børn eller er du interesseret i vores
-              tilgængelighed?
-            </p>
-            <LinkButton
-              href="/praktiskinfo"
-              variant="blue"
-              className="w-fit"
-              linkText="Læs mere"
-              icon
-            />
+            <div className="md:mx-10 mx-3">
+              <p className="py-4">
+                Vil du besøge museet med børn eller er du interesseret i vores
+                tilgængelighed?
+              </p>
+              <LinkButton
+                href="/praktiskinfo"
+                variant="blue"
+                className="w-fit"
+                linkText="Læs mere"
+                icon
+              />
+            </div>
           </div>
         </div>
+      </div>
+
+      <div className=" md:mx-10 mx-3">
+        <NewsSection />
       </div>
       <BuyTicketSection />
     </div>
