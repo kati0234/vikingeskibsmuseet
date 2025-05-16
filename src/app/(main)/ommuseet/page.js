@@ -10,7 +10,7 @@ export default function OmMuseetPage() {
       <div className=" mx-3 md:mx-10">
         <div className="pb-12">
           <h1 className=" uppercase text-4xl font-semibold pt-6 md:pt-20 ">
-            OmMuseetPage
+            Om museet
           </h1>
           <p>
             Vi er Danmarks museum for mennesket, skibet og havet i oldtid og
