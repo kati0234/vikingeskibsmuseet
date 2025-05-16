@@ -2,7 +2,6 @@
 import { useFormContext } from "react-hook-form";
 import { useState } from "react";
 import { LuTicket } from "react-icons/lu";
-import { useEffect } from "react";
 import InputField from "@/ui/Atom/InputField/InputField";
 import Button from "@/ui/Atom/Button/Button";
 
