@@ -1,7 +1,7 @@
 "use client";
 import AddAndMinus from "@/ui/Atom/AddAndMinus/AddAndMinus";
 import Button from "@/ui/Atom/Button/Button";
-import { useForm, SubmitHandler } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { LuTicket } from "react-icons/lu";
 
