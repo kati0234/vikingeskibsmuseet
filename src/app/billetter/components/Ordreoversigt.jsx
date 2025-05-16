@@ -6,7 +6,7 @@ import { useEffect } from "react";
 import InputField from "@/ui/Atom/InputField/InputField";
 import Button from "@/ui/Atom/Button/Button";
 
-export const Ordreoversigt = ({
+export const OrdreOversigt = ({
   formData,
   totalPrice,
   discountAmount,

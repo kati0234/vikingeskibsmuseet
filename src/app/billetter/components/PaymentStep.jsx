@@ -10,7 +10,7 @@ import { LuCreditCard, LuMoveLeft } from "react-icons/lu";
 import InputField from "@/ui/Atom/InputField/InputField";
 import CheckboxField from "@/ui/Atom/CheckboxField/CheckboxField";
 import Button from "@/ui/Atom/Button/Button";
-import { Ordreoversigt } from "./OrdreOversigt";
+import { OrdreOversigt } from "./OrdreOversigt";
 
 const PaymentStep = ({ onNext, onBack, formData }) => {
   // Formular konfiguration
@@ -194,7 +194,7 @@ const PaymentStep = ({ onNext, onBack, formData }) => {
           </div>
 
           {/* Ordreoversigt */}
-          <Ordreoversigt
+          <OrdreOversigt
             formData={formData}
             totalPrice={totalPrice}
             discountAmount={discountAmount}
