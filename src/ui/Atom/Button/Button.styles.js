@@ -1,7 +1,7 @@
 import { tv } from "tailwind-variants";
 
 export const buttonStyles = tv({
-  base: "rounded-3xl  text-base font-medium transition-colors text-nowrap",
+  base: "rounded-3xl   text-base font-medium transition-colors text-nowrap",
   variants: {
     variant: {
       primary:

@@ -2,7 +2,6 @@
 import { useState } from "react";
 import TicketSelection from "./components/TicketSelection";
 import PaymentStep from "./components/PaymentStep";
-import PaymentTest from "./components/PaymentTest";
 import OrderConfirmation from "./components/OrderConfirmation";
 
 export default function Billetter() {
@@ -22,7 +21,7 @@ export default function Billetter() {
         <TicketSelection onNext={nextStep} defaultValues={formData} />
       )}
       {step === 2 && (
-        <PaymentTest formData={formData} onBack={prevStep} onNext={nextStep} />
+        <PaymentStep formData={formData} onBack={prevStep} onNext={nextStep} />
       )}
       {step === 3 && <OrderConfirmation formData={formData} />}
     </div>

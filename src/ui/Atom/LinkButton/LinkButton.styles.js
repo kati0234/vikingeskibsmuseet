@@ -1,7 +1,7 @@
 import { tv } from "tailwind-variants";
 
 export const linkButtonStyles = tv({
-  base: " font-medium    transition-colors",
+  base: " font-medium text-nowrap   transition-colors",
   variants: {
     variant: {
       simpel: "hover:underline  text-bw-950",

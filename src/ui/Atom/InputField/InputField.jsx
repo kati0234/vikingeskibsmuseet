@@ -16,12 +16,11 @@ const InputField = ({
   isLoading,
 }) => {
   const { onBlur: rhfOnBlur, onChange, ref, name: inputName } = register(name);
-  console.log("error:", error, "success:", success);
   const [isFocused, setIsFocused] = useState(false);
 
   const showError = !isLoading && !isFocused && error;
   return (
-    <div className="">
+    <div className="w-full">
       {label && (
         <label htmlFor={name} className="text-lg font-medium  block pb-2">
           {label}
@@ -32,7 +31,10 @@ const InputField = ({
         id={name}
         name={inputName}
         ref={ref}
+        aria-label={label}
+        aria-placeholder={placeholder}
         placeholder={placeholder}
+        aria-describedby={`indtast gyldig ${name}`}
         maxLength={maxLength}
         {...register(name)}
         className={inputFieldStyles({
@@ -57,7 +59,9 @@ const InputField = ({
         readOnly={readOnly}
       />
       {showError && (
-        <p className="text-red-500 text-wrap text-sm mt-1">{error.message}</p>
+        <p role="alert" className="text-red-500 text-wrap text-sm mt-1">
+          {error.message}
+        </p>
       )}
     </div>
   );

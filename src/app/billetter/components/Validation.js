@@ -4,12 +4,7 @@ const discountCodes = ["katinka", "vsm"];
 export const paymentSchema = z.object({
   name: z.string().min(1, { message: "Name is required" }),
   email: z.string().email({ message: "Invalid email format" }),
-  // terms: z.boolean().refine((val) => val === true, {
-  //   message: "You must accept the terms and conditions", // Ja til betingelser
-  // }),
   newsletter: z.boolean().optional(), // Nyhedsbrev er valgfrit
-
-  // cardHolder: z.string().min(1, { message: "Card holder's name is required" }),
 
   cardNumber: z.preprocess(
     (value) => String(value).replace(/\s/g, ""), // Fjern mellemrum

@@ -153,7 +153,7 @@ const HeaderMain = () => {
             <p>Åbent i dag 09.00 - 16.00</p>
             <div className="flex items-center gap-2">
               <p>DA</p>
-              <LuSearch />
+              <LuSearch className="w-6 h-6" />
             </div>
           </div>
 

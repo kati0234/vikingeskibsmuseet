@@ -1,365 +1,106 @@
-// OrderHistory.js
-
-import React from "react";
-import clsx from "clsx";
-import DiscountSection from "./Discount";
-import Discount from "./DiscountTest";
-import InputField from "@/ui/Atom/InputField/InputField";
+"use client";
+import { useFormContext } from "react-hook-form";
+import { useState } from "react";
 import { LuTicket } from "react-icons/lu";
+import { useEffect } from "react";
+import InputField from "@/ui/Atom/InputField/InputField";
 import Button from "@/ui/Atom/Button/Button";
-import { useState, useEffect } from "react";
-import { Controller } from "react-hook-form";
-import LinkButton from "@/ui/Atom/LinkButton/LinkButton";
-const Ordreoversigt = ({
+
+export const Ordreoversigt = ({
   formData,
-  discount,
-  discountCode,
-  setDiscountCode,
-  setDiscount,
   totalPrice,
-  finalPrice,
   discountAmount,
-  errors,
-  // getValues,
-  setValue,
-  control,
-  register,
-
-  trigger,
+  finalPrice,
 }) => {
-  const [tempCode, setTempCode] = useState(discountCode || "");
+  const {
+    register,
+    watch,
+    // setValue,
+    formState: { errors },
+  } = useFormContext();
 
-  const validateDiscount = () => {
-    trigger("discountCode").then((isValid) => {
-      if (!isValid) return;
+  const [isApplyingDiscount, setIsApplyingDiscount] = useState(false);
+  const discountCode = watch("discountCode");
 
-      const code = tempCode.trim().toLowerCase();
-      setDiscountCode(code);
+  const [showDiscount, setShowDiscount] = useState(false);
 
-      if (code === "katinka") {
-        setDiscount(0.1);
-      } else if (code === "vsm") {
-        setDiscount(0.2);
+  const handleApplyDiscount = () => {
+    setIsApplyingDiscount(true);
+    setShowDiscount(false); // Skjul rabatten indtil vi har tjekket
+
+    setTimeout(() => {
+      if (["katinka", "vsm"].includes(discountCode?.trim().toLowerCase())) {
+        setShowDiscount(true); // Vis rabatten hvis koden er gyldig
       } else {
-        setDiscount(0);
+        // Du kan evt. sætte en fejl her hvis du bruger setError fra react-hook-form
+        setShowDiscount(false);
       }
-      setValue("hasAppliedDiscount", true); // Marker at rabatkoden er blevet anvendt
-    });
+      setIsApplyingDiscount(false);
+    }, 800);
   };
 
   return (
-    <div className="w-[400px] md:col-start-2 col-span-1 p-4 bg-bw-100 rounded-xl mx-auto">
-      <p className="text-2xl font-semibold pb-2">ordreoversigt</p>
-
-      <ul className="space-y-2">
-        {formData.tickets.map((ticket, index) => {
-          const total = ticket.price * ticket.quantity;
-          const discountAmount = discount > 0 ? total * discount : 0;
-          const finalTotal = total - discountAmount;
-
-          return (
-            <li key={index} className="flex flex-col gap-3">
-              <div className="flex justify-between">
-                <span>
-                  {ticket.quantity} x {ticket.type}
-                </span>
-
-                <span
-                  className={clsx({
-                    "line-through font-normal text-base text-gray-500":
-                      discount > 0, // Rabat aktiv - pris gennemstreget
-                    "font-semibold text-base": discount === 0, // Ingen rabat - almindelig fed tekst
-                  })}
-                >
-                  {total} kr
-                </span>
-              </div>
-
-              {discount > 0 && (
-                <>
-                  <div className="flex justify-between text-sm">
-                    <span>Rabat (katinka)</span>
-                    <span>-{discountAmount.toFixed(0)} kr</span>
-                    <span className="font-semibold">
-                      {finalTotal.toFixed(0)} kr
-                    </span>
-                  </div>
-                </>
-              )}
-            </li>
-          );
-        })}
+    <div className="space-y-4  p-4 w-full md:w-[375px] rounded-lg bg-bw-100">
+      <p className="font-semibold text-[28px]">Ordreoversigt</p>
+      <ul className=" border-b pb-3">
+        {formData.tickets.map((ticket) => (
+          <li key={ticket.type} className="py-1 flex justify-between">
+            <span>
+              {ticket.quantity}x {ticket.type}
+            </span>
+            <span className="font-semibold">
+              {ticket.price * ticket.quantity} kr
+            </span>
+          </li>
+        ))}
       </ul>
 
-      <label htmlFor="discountCode">Rabatkode</label>
-      {/* <input
-        id="discountCode"
-        name="discountCode"
-        type="text"
-        value={tempCode}
-        onChange={(e) => setTempCode(e.target.value)}
-        onBlur={validateDiscount}
-        className="w-full p-2 border rounded-md"
-        placeholder="Indtast rabatkode"
-      /> */}
-      {/* {errors.discountCode && (
-        <span className="text-red-500">{errors.discountCode.message}</span>
-      )} */}
-      {/* <input
-        id="discountCode"
-        type="text"
-        {...register("discountCode")}
-        value={tempCode}
-        onChange={(e) => setTempCode(e.target.value)}
-        onBlur={validateDiscount}
-        className="w-full p-2 border rounded-md"
-        placeholder="Indtast rabatkode"
-      />
-      {errors.discountCode && (
-        <span className="text-red-500">{errors.discountCode.message}</span>
-      )} */}
-
-      {/* <input
-        id="discountCode"
-        type="text"
-        {...register("discountCode", {
-          validate: (value) => {
-            const code = value.trim().toLowerCase();
-            if (!code) return true;
-            if (["katinka", "vsm"].includes(code)) return true;
-            return "Ugyldig rabatkode";
-          },
-        })}
-        value={tempCode}
-        onChange={(e) => setTempCode(e.target.value)}
-        onBlur={validateDiscount}
-        className="w-full p-2 border rounded-md"
-        placeholder="Indtast rabatkode"
-      /> */}
-      <Controller
-        name="discountCode"
-        control={control}
-        defaultValue=""
-        rules={{
-          validate: (value) => {
-            const code = value.trim().toLowerCase();
-            if (!code) return "Indtast en rabatkode";
-            if (!["katinka", "vsm"].includes(code)) return "Ugyldig rabatkode";
-            return true;
-          },
-        }}
-        render={({ field }) => (
-          <input
-            {...field}
-            id="discountCode"
-            value={tempCode}
-            onChange={(e) => {
-              setTempCode(e.target.value);
-              field.onChange(e); // Vigtigt: RHF skal også få besked
-            }}
-            onBlur={() => {
-              validateDiscount();
-              field.onBlur(); // RHF trigger validering
-            }}
-            className="w-full p-2 border rounded-md"
-            placeholder="Indtast rabatkode"
-          />
-        )}
-      />
-      {errors.discountCode && (
-        <span className="text-red-500">{errors.discountCode.message}</span>
-      )}
-      {/* <input
-        id="discountCode"
-        {...register("discountCode", {
-          validate: (value) => {
-            const code = value.trim().toLowerCase();
-            if (!code) return true;
-            if (["katinka", "vsm"].includes(code)) return true;
-            return "Ugyldig rabatkode";
-          },
-        })}
-        value={tempCode}
-        onChange={(e) => setTempCode(e.target.value)}
-        onBlur={validateDiscount}
-        className="w-full p-2 border rounded-md"
-        placeholder="Indtast rabatkode"
-      />
-      {errors.discountCode && (
-        <span className="text-red-500">{errors.discountCode.message}</span>
-      )} */}
-      {/* {errors.discountCode && (
-        <span className="text-red-500">{errors.discountCode.message}</span>
-      )} */}
-      <div className="mt-6 text-xl">
-        {/* Total pris */}
-        <div className="flex justify-between">
-          <span className="font-semibold">Sub Total</span>
-          <span
-            className={
-              discount > 0
-                ? "line-through font-normal text-bw-950"
-                : "font-semibold"
-            }
-          >
-            {totalPrice.toFixed(0)} kr.
-          </span>
-        </div>
-
-        {/* Hvis rabat er aktiv, vis rabatbeløb og den nye pris */}
-        {discount > 0 && (
-          <>
-            <div className="flex justify-between text-green-700 text-sm">
-              <span>Rabat ({discount * 100}%)</span>
-              <span>-{discountAmount.toFixed(0)} kr</span>
-            </div>
-            <div className="flex justify-between font-semibold">
-              <span>Ny pris</span>
-              <span>{finalPrice.toFixed(0)} kr</span>
-            </div>
-          </>
-        )}
-      </div>
-
-      <LinkButton
-        linkText="tilbage til forsiden"
-        variant="beige"
-        size="md"
-        href="/"
-        houseIcon
-      />
-    </div>
-  );
-};
-
-export default Ordreoversigt;
-
-// useEffect(() => {
-//   // Update the price when discount or tickets change
-//   setDiscountCode(tempCode);
-//   setDiscount(discountAmountCalculated > 0 ? discountAmountCalculated : 0);
-// }, [formData, discount, tempCode]);
-// const validateDiscount = async () => {
-//   const isValid = await trigger("discountCode");
-//   if (!isValid) return; // Stop hvis feltet ikke er gyldigt
-
-//   const code = tempCode.trim().toLowerCase();
-//   setDiscountCode(code); // Gem den validerede kode
-
-//   if (code === "katinka") {
-//     setDiscount(0.1);
-//   } else if (code === "vsm") {
-//     setDiscount(0.2);
-//   } else {
-//     setDiscount(0);
-//   }
-// };
-
-{
-  /* <div className="mt-6">
+      <div className="flex gap-2 flex-col  justify-center">
         <InputField
           name="discountCode"
-          label="Indtast rabatkode"
+          label="Rabatkode"
           type="text"
-          placeholder="Indtast din rabatkode"
+          placeholder="Indtast rabatkode"
           register={register}
           error={errors.discountCode}
           success={discountCode && !errors.discountCode}
-          value={tempCode}
-          onBlur={validateDiscount}
-          trigger={trigger}
-          onChange={(e) => setTempCode(e.target.value)}
+          isLoading={isApplyingDiscount}
         />
+
         <Button
-          onClick={validateDiscount}
+          onClick={handleApplyDiscount}
           delay={800}
           size="md"
+          isLoading={handleApplyDiscount}
           type="button"
-          isLoading
           iconOnly={false}
           variant="secondary"
           iconAndText
+          aria-label="anvend rabatkoden"
           iconStart={<LuTicket />}
         >
-          Anvend
+          {isApplyingDiscount ? "Anvendt" : "Anvend"}
         </Button>
-      </div> */
-}
+      </div>
+      <div className="pt-4 space-y-2">
+        <div className="flex justify-between">
+          <span>Subtotal</span>
+          <span>{totalPrice} kr</span>
+        </div>
 
-{
-  /* <DiscountSection
-        discount={discount}
-        discountCode={discountCode}
-        setDiscountCode={setDiscountCode}
-        setDiscount={setDiscount}
-        errors={errors}
-        // setValue={setValue} // NYT
-        trigger={trigger}
-      /> */
-}
+        {/* vil kun vise det hvis det er rigit */}
+        {showDiscount && (
+          <div className="flex justify-between">
+            <span>Rabat ({discountCode || "Ingen kode"})</span>
+            <span>-{discountAmount} kr</span>
+          </div>
+        )}
 
-{
-  /* <Discount
-        discountCode={discountCode}
-        setDiscountCode={setDiscountCode}
-        setDiscount={setDiscount}
-        register={register}
-        trigger={trigger}
-        setValue={setValue}
-        getValues={getValues}
-        errors={errors}
-      /> */
-}
-
-// const validateDiscount = () => {
-//   trigger("discountCode").then((isValid) => {
-//     if (!isValid) return;
-
-//     const code = tempCode.trim().toLowerCase();
-//     setDiscountCode(code);
-
-//     if (code === "katinka") {
-//       setDiscount(0.1);
-//     } else if (code === "vsm") {
-//       setDiscount(0.2);
-//     } else {
-//       setDiscount(0);
-//     }
-
-//     setValue("hasAppliedDiscount", true);
-//   });
-// };
-
-// const [tempCode, setTempCode] = useState(discountCode || "");
-
-// // const validateDiscount = () => {
-// //   const code = tempCode.trim().toLowerCase();
-// //   setDiscountCode(code);
-
-// //   if (code === "katinka") {
-// //     setDiscount(0.1);
-// //   } else if (code === "vsm") {
-// //     setDiscount(0.2);
-// //   } else {
-// //     setDiscount(0);
-// //   }
-// // };
-// const validateDiscount = () => {
-//   trigger("discountCode").then((isValid) => {
-//     if (!isValid) return;
-
-//     const code = tempCode.trim().toLowerCase();
-//     setDiscountCode(code);
-
-//     if (code === "katinka") {
-//       setDiscount(0.1);
-//     } else if (code === "vsm") {
-//       setDiscount(0.2);
-//     } else {
-//       setDiscount(0);
-//     }
-
-//     // ✅ MARKÉR at rabatkoden er blevet anvendt
-//     setValue("hasAppliedDiscount", true);
-//   });
-// };
+        <div className="flex justify-between font-bold text-lg">
+          <span>Pris i alt</span>
+          <span>{finalPrice} kr</span>
+        </div>
+      </div>
+    </div>
+  );
+};

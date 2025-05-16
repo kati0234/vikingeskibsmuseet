@@ -106,15 +106,16 @@ export default function ActivitiesCarousel() {
         </Swiper>
       </div>
 
-      {/* Custom navigation */}
-      <div className="flex gap-10  z-10">
+      <div className="flex gap-10 z-10">
         <button
+          type="button"
           onClick={() => swiperRef.current?.slidePrev()}
           className="text-4xl text-beige-500 hover:scale-110 transition"
         >
           <LuMoveLeft />
         </button>
         <button
+          type="button"
           onClick={() => swiperRef.current?.slideNext()}
           className="text-4xl text-beige-500 hover:scale-110 transition"
         >

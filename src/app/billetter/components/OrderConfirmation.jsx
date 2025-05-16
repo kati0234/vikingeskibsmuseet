@@ -90,7 +90,7 @@ const OrderConfirmation = ({ formData }) => {
           </div>
         )}
       </div>
-      <div className="flex justify-start gap-3">
+      <div className="flex flex-wrap md:flex-nowrap justify-center  md:justify-start gap-3">
         <LinkButton
           linkText="Hent dine billetter"
           variant="blue"

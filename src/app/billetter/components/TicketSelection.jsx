@@ -57,8 +57,8 @@ const TicketSelection = ({ onNext, defaultValues }) => {
       { type: "Vokse +18", quantity: data.adult, price: 160 },
       { type: "Studerende", quantity: data.student, price: 100 },
       { type: "Barn/under 18", quantity: data.child, price: 0 },
-      { type: "Pensionist", quantity: data.senior, price: 80 },
-      { type: "familie", quantity: data.family, price: 300 },
+      { type: "67 billet", quantity: data.senior, price: 80 },
+      { type: "familie billet", quantity: data.family, price: 300 },
     ].filter((ticket) => ticket.quantity > 0); // Fjern dem der er 0
     onNext({
       tickets,
@@ -129,7 +129,7 @@ const TicketSelection = ({ onNext, defaultValues }) => {
           <AddAndMinus
             name="senior"
             control={control}
-            label="Pensionist Billet"
+            label="67 billet"
             price={"80 kr"}
           />
           <AddAndMinus

@@ -87,7 +87,7 @@ export default function OmMuseetPage() {
             />
           </div>
         </div>
-        <div className="grid  md:grid-cols-2 md:mx-10 mx-3 m">
+        <div className="grid  md:grid-cols-2 md:mx-0 mx-3  ">
           <h2 className="text-[26px] font-semibold uppercase">
             Nyt fra museet
           </h2>
@@ -141,7 +141,7 @@ export default function OmMuseetPage() {
                 className="object-cover"
               />
             </div>
-            <div className="md:mx-10 mx-3">
+            <div className="md:mx-0 mx-3">
               <p className="py-4">
                 Vil du besøge museet med børn eller er du interesseret i vores
                 tilgængelighed?

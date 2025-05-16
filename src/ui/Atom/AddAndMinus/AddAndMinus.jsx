@@ -47,10 +47,20 @@ const AddAndMinus = ({
     }
   };
 
+  // Generer dynamisk aria-label baseret på name eller label
+  const getAriaLabel = (action) => {
+    const itemName = label || name || "value";
+    return `${action} ${itemName}`;
+  };
+
   return (
     <div className="flex justify-between h-[52px] items-center">
       <div className="">
-        <label htmlFor={name} className="block text-xl font-semibold ">
+        <label
+          htmlFor={name}
+          id={label}
+          className="block text-xl font-semibold "
+        >
           {label}
         </label>
         {description && (
@@ -72,20 +82,18 @@ const AddAndMinus = ({
               <LuMinus className="w-[16px] h-[16px] md:w-[24px] md:h-[24px]" />
             }
             disabled={Number(field.value) <= min}
-            aria-label="Decrease value"
+            aria-label={getAriaLabel("Decrease")}
           ></Button>
 
           <input
             id={name}
             type="text"
+            aria-label={`Antal ${label || name}`}
             className=" font-semibold text-lg text-center w-12 h-10   readonly focus:ring-0 focus:outline-none pointer-events-none"
             value={field.value}
             onChange={handleChange}
             onBlur={field.onBlur}
           />
-          {/* [&::-webkit-outer-spin-button]:appearance-none */}
-          {/* [appearance:textfield]   */}
-          {/* [&::-webkit-inner-spin-button]:appearance-none  */}
           <Button
             type="button"
             onClick={handleIncrement}
@@ -96,7 +104,7 @@ const AddAndMinus = ({
               <LuPlus className="w-[16px] h-[16px] md:w-[24px] md:h-[24px]" />
             }
             disabled={Number(field.value) >= max}
-            aria-label="Increase value"
+            aria-label={getAriaLabel("Increase")}
           ></Button>
         </div>
         {error && <p className="text-sm text-red-500 mt-1">{error.message}</p>}
