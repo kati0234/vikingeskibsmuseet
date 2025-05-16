@@ -5,7 +5,7 @@ import { LuTicket } from "react-icons/lu";
 import InputField from "@/ui/Atom/InputField/InputField";
 import Button from "@/ui/Atom/Button/Button";
 
-export const OrdreOversigt = ({
+const OrdreOversigt = ({
   formData,
   totalPrice,
   discountAmount,
@@ -103,3 +103,4 @@ export const OrdreOversigt = ({
     </div>
   );
 };
+export default OrdreOversigt;
