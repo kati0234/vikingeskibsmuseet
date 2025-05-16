@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { LuTicket } from "react-icons/lu";
 
 import { z } from "zod";
+
 const ticketSchema = z
   .object({
     adult: z.number().min(0),
