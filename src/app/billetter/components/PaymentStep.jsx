@@ -10,7 +10,7 @@ import { LuCreditCard, LuMoveLeft } from "react-icons/lu";
 import InputField from "@/ui/Atom/InputField/InputField";
 import CheckboxField from "@/ui/Atom/CheckboxField/CheckboxField";
 import Button from "@/ui/Atom/Button/Button";
-import OrdreOversigt from "./OrdreOversigt";
+import OrdreOversigt from "./OrdreOversigtfaill";
 
 const PaymentStep = ({ onNext, onBack, formData }) => {
   // Formular konfiguration
