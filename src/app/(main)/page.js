@@ -4,8 +4,6 @@ import HeroVideo from "@/ui/Molekyle/Herovideo/HeroVideo";
 import OpeningHours from "@/ui/Molekyle/OpeningHours/OpeningHours";
 import ActivitiesCarousel from "@/ui/Molekyle/Swiper/ActivitiesCarousel";
 import UdstillingerCarousel from "@/ui/Molekyle/Swiper/UdstillingerCarosel";
-import Image from "next/image";
-import Link from "next/link";
 
 export default function Home() {
   return (

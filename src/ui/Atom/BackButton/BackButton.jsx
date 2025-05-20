@@ -1,7 +1,8 @@
-"use client"; // hvis du bruger app-router
+"use client";
 
 import { useRouter } from "next/navigation";
 import { LuMoveLeft } from "react-icons/lu";
+
 export default function BackButton() {
   const router = useRouter();
 

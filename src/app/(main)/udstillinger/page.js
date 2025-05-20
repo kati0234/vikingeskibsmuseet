@@ -27,6 +27,7 @@ export default function Udstillinger() {
           src={udstilling.image}
           alt={udstilling.alt}
           fill
+          priority
           sizes="(max-width: 5760px) 100vw, 5760px"
           className={clsx(
             "object-cover absolute transition-opacity duration-500 ease-in-out",

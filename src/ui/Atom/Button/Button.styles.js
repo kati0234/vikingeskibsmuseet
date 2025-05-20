@@ -12,16 +12,16 @@ export const buttonStyles = tv({
         "bg-red-500 text-white hover:bg-red-600 active:bg-beige-500 active:text-bw-950 ",
       tertiary:
         " border-bw-950 border-2 text-bw-950 hover:bg-bw-950 active:bg-bw-50 active:text-bw-950 hover:text-bw-50 disabled:cursor-not-allowed disabled:text-bw-700 disabled:border-bw-700 disabled:bg-bw-50 ",
-      link: "bg-transparent text-bw-950 hover:underline",
+      link: "bg-transparent text-bw-950",
+      linkCard: "bg-transparent text-bw-40 ",
     },
     size: {
-      header: "text-lg font-semibold",
+      header: "text-lg font-semibold  hover:underline",
       md: "px-6 py-3",
       lg: "text-lg",
       as: "p-2",
     },
     selected: {
-      // Skift tilbage til 'selected' for konsistens
       true: "",
       false: "",
     },
@@ -72,7 +72,6 @@ export const buttonStyles = tv({
       className: "h-[32px] min-w-[70px] px-3 text-sm",
     },
 
-    // Selected + Secondary
     {
       variant: "secondary",
       selected: true,

@@ -7,7 +7,6 @@ import Filter from "./components/Filter";
 import { DatePicker } from "@mui/x-date-pickers/DatePicker";
 import { LocalizationProvider } from "@mui/x-date-pickers/LocalizationProvider";
 import { AdapterDayjs } from "@mui/x-date-pickers/AdapterDayjs";
-import TextField from "@mui/material/TextField";
 import dayjs from "dayjs";
 import "dayjs/locale/da";
 import BuyTicketSection from "@/ui/Molekyle/BuyTicketSection/BuyTicketSection";
@@ -51,6 +50,12 @@ export default function Aktiviteter() {
     allDates.push(cursor);
     cursor = cursor.add(1, "day");
   }
+
+  useEffect(() => {
+    if (aktiviteter.length > 0 && !value) {
+      setValue(dayjs());
+    }
+  }, [aktiviteter]);
 
   return (
     <div className="p-10 mt-[128px] mb-16">

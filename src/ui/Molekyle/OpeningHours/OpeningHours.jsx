@@ -1,4 +1,4 @@
-const OpeningHours = ({}) => {
+const OpeningHours = () => {
   return (
     <div className="space-y-6  rounded-lg md:w-[668px]">
       <ul className="flex divide-solid flex-col divide-bw-950  divide-y-[0.5px]">

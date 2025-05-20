@@ -24,7 +24,7 @@ const LinkButton = ({
     >
       {ticketIcon && <LuTicket className="text-bw-50  w-[24px] h-[24px]" />}
       {houseIcon && <LuHouse className="text-current  w-[24px] h-[24px]" />}
-      <p className="font-medium text-nowrap ">{linkText}</p>
+      <p className="font-medium text-nowrap">{linkText}</p>
       {icon && (
         <LuMoveRight className="text-bw-50 w-[24px] h-[24px] hover:scale-110 transition" />
       )}

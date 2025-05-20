@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import TicketSelection from "./components/TicketSelection";
 import PaymentStep from "./components/PaymentStep";
 import OrderConfirmation from "./components/OrderConfirmation";
@@ -14,6 +14,10 @@ export default function Billetter() {
   };
 
   const prevStep = () => setStep((prev) => prev - 1);
+
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  }, [step]);
 
   return (
     <div className="mt-[141px] md:mt-[137px] mx-12-271   mb-10">

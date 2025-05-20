@@ -1,7 +1,9 @@
-import { getSingleActivity } from "@/lib/api"; // justér stien hvis nødvendigt
+import Image from "next/image";
+
+import { getSingleActivity } from "@/lib/api";
+
 import BuyTicketSection from "@/ui/Molekyle/BuyTicketSection/BuyTicketSection";
 import UdstillingerCarousel from "@/ui/Molekyle/Swiper/UdstillingerCarosel";
-import Image from "next/image";
 
 export default async function AktivitetPage({ params }) {
   const { slug } = await params;
@@ -22,7 +24,7 @@ export default async function AktivitetPage({ params }) {
           priority
           sizes="(max-width: 1960px) 100vw, 5760px"
         />
-
+        <div className="bg-black/15 absolute w-full h-full"></div>
         <div className="absolute bottom-0 left-0  text-bw-50 p-4">
           <h1 className="text-2xl md:text-[32px]  font-semibold uppercase">
             {aktivitet.title}

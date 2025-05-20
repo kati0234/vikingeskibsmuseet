@@ -58,8 +58,8 @@ const TicketSelection = ({ onNext, defaultValues }) => {
       { type: "Vokse +18", quantity: data.adult, price: 160 },
       { type: "Studerende", quantity: data.student, price: 100 },
       { type: "Barn/under 18", quantity: data.child, price: 0 },
-      { type: "67 billet", quantity: data.senior, price: 80 },
-      { type: "familie billet", quantity: data.family, price: 300 },
+      { type: "67+ ", quantity: data.senior, price: 80 },
+      { type: "familie ", quantity: data.family, price: 300 },
     ].filter((ticket) => ticket.quantity > 0); // Fjern dem der er 0
     onNext({
       tickets,
@@ -83,11 +83,7 @@ const TicketSelection = ({ onNext, defaultValues }) => {
           <div className="w-full h-1 bg-gray-300 rounded"></div>
         </div>
       </div>
-      <form
-        className=""
-        onSubmit={handleSubmit(onSubmit)}
-        // skal være i 571
-      >
+      <form onSubmit={handleSubmit(onSubmit)}>
         <div className="max-w-[571px] ">
           <div className="flex items-center pb-3  gap-3">
             <div
@@ -130,13 +126,14 @@ const TicketSelection = ({ onNext, defaultValues }) => {
           <AddAndMinus
             name="senior"
             control={control}
-            label="67 billet"
+            label="67+"
             price={"80 kr"}
+            description={"Alle over 67"}
           />
           <AddAndMinus
             name="family"
             control={control}
-            label="Familie billet"
+            label="Familie"
             description={"Inkludere 2 voksne+børn 0-17 år."}
             price={"300 kr"}
           />

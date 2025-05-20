@@ -13,6 +13,7 @@ const HeroVideo = () => {
         <source src="/assets/images/herovideo.mp4" type="video/mp4" />
         Din browser understøtter ikke video-tagget.
       </video>
+      <div className="bg-black/15 absolute w-full h-full"></div>
       <div className="absolute bottom-0 left-0  text-bw-50 px-4 py-16">
         <h1 className="text-2xl md:text-5xl  font-bold uppercase">
           DYK NED I VIKINGETIDEN MED EN DAG PÅ VIKINGESKIBSMUSEET

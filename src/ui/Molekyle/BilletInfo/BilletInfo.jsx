@@ -1,6 +1,6 @@
 import LinkButton from "@/ui/Atom/LinkButton/LinkButton";
 
-const BilletInfo = ({}) => {
+const BilletInfo = () => {
   return (
     <div className="space-y-6 bg-yellow-100 p-6 rounded-lg max-w-[668px]">
       <p className="text-2xl font-semibold">BILLETTER</p>
@@ -18,11 +18,11 @@ const BilletInfo = ({}) => {
           <p className="text-lg">100 kr.</p>
         </li>
         <li className="flex justify-between pt-4 pb-2">
-          <p className="text-xl">Pensionist Billet</p>
+          <p className="text-xl">67+</p>
           <p className="text-lg">80 kr.</p>
         </li>
         <li className="flex justify-between pt-4 pb-2">
-          <p className="text-xl">Familie billet</p>
+          <p className="text-xl">Familie</p>
           <p className="text-lg">300 kr.</p>
         </li>
       </ul>

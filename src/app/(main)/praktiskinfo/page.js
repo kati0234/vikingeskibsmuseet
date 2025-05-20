@@ -1,9 +1,11 @@
+import Image from "next/image";
+
 import MyDisclosure from "@/ui/Atom/Disclosure/Disclosure";
 import LinkButton from "@/ui/Atom/LinkButton/LinkButton";
 import BilletInfo from "@/ui/Molekyle/BilletInfo/BilletInfo";
 import BuyTicketSection from "@/ui/Molekyle/BuyTicketSection/BuyTicketSection";
 import OpeningHours from "@/ui/Molekyle/OpeningHours/OpeningHours";
-import Image from "next/image";
+
 import { GoStarFill } from "react-icons/go";
 
 export default function PraktiskInfoPage() {
@@ -32,8 +34,8 @@ export default function PraktiskInfoPage() {
 
           <LinkButton
             size="sm"
-            href="#Transport"
-            linkText="Transport & parkering"
+            href="#Find-vej-&-parkering"
+            linkText="Find vej & parkering"
             variant="simpel"
           />
           <LinkButton
@@ -50,7 +52,7 @@ export default function PraktiskInfoPage() {
           />
           <LinkButton
             size="sm"
-            href="#faq"
+            href="#Ofte-stillede-spørgsmål"
             linkText="Ofte stillede spørgsmål"
             variant="simpel"
           />
@@ -90,11 +92,11 @@ export default function PraktiskInfoPage() {
         </div>
       </section>
       <section
-        id="Transport"
+        id="Find-vej-&-parkering"
         className="flex justify-between md:flex-row flex-col scroll-mt-[130px] w-full border-b-1 border-bw-600 py-20"
       >
         <h2 className="text-3xl font-semibold pb-6 uppercase">
-          Transport & parkering
+          Find vej & parkering
         </h2>
         <div className="space-y-6 md:w-[668px] ">
           <div>
@@ -226,7 +228,7 @@ export default function PraktiskInfoPage() {
       </section>
 
       <section
-        id="faq"
+        id="Ofte-stillede-spørgsmål"
         className="flex justify-between md:flex-row flex-col scroll-mt-[130px]  w-full border-b-1 border-bw-600 py-20"
       >
         <h2 className="text-3xl font-semibold pb-6 uppercase">

@@ -6,39 +6,7 @@ import "swiper/css";
 import { LuMoveLeft, LuMoveRight } from "react-icons/lu";
 import { useRef, useState } from "react";
 import clsx from "clsx";
-
-const slides = [
-  {
-    image: "/assets/images/aktivitetskarrusel/aktivitet_1.webp",
-    title: "SEJLADSER",
-    description:
-      "Tag med på en af de daglige sejladser til 30. september og oplev, hvordan det var at være viking ombord.",
-  },
-  {
-    image: "/assets/images/aktivitetskarrusel/aktivitet_2.webp",
-    title: "HÅNDVÆRK",
-    description:
-      "Oplev vikingernes gamle håndværk – smedning, træskæring og vævning i autentiske omgivelser.",
-  },
-  {
-    image: "/assets/images/aktivitetskarrusel/aktivitet_3.webp",
-    title: "FORTÆLLINGER",
-    description:
-      "Lyt til spændende fortællinger om vikingernes rejser, myter og heltefortællinger for hele familien.",
-  },
-  {
-    image: "/assets/images/aktivitetskarrusel/aktivitet_4.webp",
-    title: "VIKINGEMAD",
-    description:
-      "Smag på ægte vikingemad tilberedt over åben ild – fra grød til røget fisk og mjød.",
-  },
-  {
-    image: "/assets/images/aktivitetskarrusel/aktivitet_5.webp",
-    title: "BØRNEAKTIVITETER",
-    description:
-      "Lad børnene prøve vikingekampe, bueskydning og sjove lege – alt i trygge omgivelser.",
-  },
-];
+import { data } from "@/lib/data/aktivitetsliderData";
 
 export default function ActivitiesCarousel() {
   const swiperRef = useRef(null);
@@ -68,7 +36,7 @@ export default function ActivitiesCarousel() {
           loop
           className="transition-all  duration-300 overflow-x-visible"
         >
-          {slides.map((slide, i) => (
+          {data.map((aktivitet, i) => (
             <SwiperSlide key={i} className="!flex items-center justify-center">
               <div
                 className={clsx(
@@ -87,8 +55,8 @@ export default function ActivitiesCarousel() {
                   )}
                 >
                   <Image
-                    src={slide.image}
-                    alt={`Slide ${i}`}
+                    src={aktivitet.image}
+                    alt={aktivitet.alt}
                     fill
                     className="object-cover"
                     sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
@@ -96,9 +64,11 @@ export default function ActivitiesCarousel() {
                 </div>
                 <div className="text-beige-500 ">
                   <p className="font-semibold text-lg md:text-xl uppercase">
-                    {slide.title}
+                    {aktivitet.title}
                   </p>
-                  <p className="text-sm md:text-base">{slide.description}</p>
+                  <p className="text-sm md:text-base">
+                    {aktivitet.description}
+                  </p>
                 </div>
               </div>
             </SwiperSlide>

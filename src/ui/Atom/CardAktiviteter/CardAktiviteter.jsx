@@ -12,7 +12,6 @@ const CardAktiviteter = ({
   console.log("Slug for project:", slug);
   return (
     <div className="flex gap-2   w-[300px] relative ">
-      {/* <div className="rounded-xl w-[100px] h-[140px] "> */}
       <Image
         src={src}
         alt={title}
@@ -20,7 +19,7 @@ const CardAktiviteter = ({
         height={140}
         className="w-[100px] h-[140px] object-cover rounded-lg "
       />
-      {/* </div> */}
+
       <div className="w-[250px]">
         <h2 className=" text-lg font-semibold">
           <Link

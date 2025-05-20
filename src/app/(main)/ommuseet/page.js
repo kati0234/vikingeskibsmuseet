@@ -6,7 +6,7 @@ import Image from "next/image";
 
 export default function OmMuseetPage() {
   return (
-    <div className="flex mb-16 flex-col gap-[32px] mt-[130px] md:mt-[150px] ">
+    <div className="flex mb-16 flex-col gap-[32px]  mt-[150px] ">
       <div className=" mx-3 md:mx-10">
         <div className="pb-12">
           <h1 className=" uppercase text-4xl font-semibold pt-6 md:pt-20 ">

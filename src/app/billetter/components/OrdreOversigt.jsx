@@ -14,7 +14,6 @@ const OrdreOversigt = ({
   const {
     register,
     watch,
-    // setValue,
     formState: { errors },
   } = useFormContext();
 
@@ -31,7 +30,6 @@ const OrdreOversigt = ({
       if (["katinka", "vsm"].includes(discountCode?.trim().toLowerCase())) {
         setShowDiscount(true); // Vis rabatten hvis koden er gyldig
       } else {
-        // Du kan evt. sætte en fejl her hvis du bruger setError fra react-hook-form
         setShowDiscount(false);
       }
       setIsApplyingDiscount(false);

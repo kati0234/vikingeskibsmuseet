@@ -20,11 +20,11 @@ export default async function SingelUdstillinger({ params }) {
           className="object-cover"
           fill
           priority
-          sizes="(max-width: 1960px) 100vw, 5760px"
+          sizes="(max-width: 1960px) 100vw, 2760px"
         />
-
+        <div className="bg-black/15 absolute w-full h-full"></div>
         <div className="absolute bottom-0 left-0  text-bw-50 p-4">
-          <h1 className="text-2xl md:text-[32px]   font-semibold uppercase">
+          <h1 className="text-2xl md:text-[32px]    font-semibold uppercase">
             {udstilling.title}
           </h1>
           <p className="text-bw-50 text-base">{udstilling.titledescription}</p>

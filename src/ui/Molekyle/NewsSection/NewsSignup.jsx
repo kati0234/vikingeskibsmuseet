@@ -12,17 +12,23 @@ const NewsSignup = ({ inSection = false }) => {
     handleSubmit,
     formState: { errors },
     reset,
-  } = useForm();
+  } = useForm({
+    mode: "onSubmit",
+  });
 
   const [submittedEmail, setSubmittedEmail] = useState(null);
-  const [message, setMessage] = useState("");
+  const [message, setMessage] = useState({ text: "", isError: false });
 
   useEffect(() => {
     if (!submittedEmail) return;
-
+    // Nulstil beskeden før nyt kald
+    setMessage({ text: "", isError: false });
     postNewsletter(submittedEmail)
       .then(() => {
-        setMessage("Tak! Du er nu tilmeldt nyhedsbrevet.");
+        setMessage({
+          text: "Tak! Du er nu tilmeldt nyhedsbrevet.",
+          isError: false,
+        });
         reset();
       })
       .catch((error) => {
@@ -30,10 +36,16 @@ const NewsSignup = ({ inSection = false }) => {
           error.message?.includes("duplicate key value") ||
           error.status === 409
         ) {
-          setMessage("Denne email er allerede tilmeldt.");
+          setMessage({
+            text: "Denne email er allerede tilmeldt.",
+            isError: true,
+          });
           reset();
         } else {
-          setMessage("Noget gik galt. Prøv igen senere.");
+          setMessage({
+            text: "Noget gik galt. Prøv igen senere.",
+            isError: true,
+          });
         }
       });
   }, [submittedEmail, reset]);
@@ -77,10 +89,20 @@ const NewsSignup = ({ inSection = false }) => {
         })}
         className="w-full  py-2 border-b text-bw-950 placeholder:text-bw-600 border-bw-950 focus:ring-0 focus:outline-none"
       />
+
       {errors.email && (
         <p className="text-sm text-error">{errors.email.message}</p>
       )}
-      {message && <p className="text-sm text-error">{message}</p>}
+      {message.text && (
+        <p
+          className={clsx(
+            "text-sm",
+            message.isError ? "text-error" : "text-success"
+          )}
+        >
+          {message.text}
+        </p>
+      )}
       <Button
         type="submit"
         className="w-full"

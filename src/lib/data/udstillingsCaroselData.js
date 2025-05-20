@@ -1,0 +1,41 @@
+export const data = [
+  {
+    image: "/assets/images/udstillingskort/opslugtafhavet_card.webp",
+    alt: "Vikingeskib tiltet til siden i vandkanten",
+    title: "OPSLUGT AF HAVET",
+    description: "- To skibe, der aldrig nåede havn",
+    linkText: "Læs mere",
+    herf: "/udstillinger/opslugtafhavet",
+  },
+  {
+    image: "/assets/images/udstillingskort/stigombord_card.webp",
+    alt: "Skilt fra museumsudstillingen på museet",
+    description: "- En grundfortælling om rejsen over åbent havn",
+    linkText: "Læs mere",
+    herf: "/udstillinger/sigombord",
+  },
+  {
+    image: "/assets/images/udstillingskort/ivikingerneskolvand_card.webp",
+    alt: "Vikingeskib i havnen til museumsøen",
+    title: "I VIKINGERNES KØLVAND",
+    description: "- Særudstilling, arkæologi under vand",
+    linkText: "Læs mere",
+    herf: "/udstillinger/ivikingerneskølevand",
+  },
+  {
+    image: "/assets/images/udstillingskort/defemrekonstruktioner_card.webp",
+    alt: "Grafik af havets bølger",
+    title: "DE FEM REKONSTRUKTIONER",
+    description: "- Særudstilling, arkæologi under vand",
+    linkText: "Læs mere",
+    herf: "/udstillinger/defemrekonstruktioner",
+  },
+  {
+    image: "/assets/images/udstillingskort/defemvikingeskibe_card.webp",
+    alt: "Original vikingeskib fra udstillinger",
+    title: "DE FEM VIKINGESKIBE",
+    description: "- Særudstilling, arkæologi under vand",
+    linkText: "Læs mere",
+    herf: "/udstillinger/defemvikingeskibe",
+  },
+];

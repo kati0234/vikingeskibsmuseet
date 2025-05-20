@@ -1,23 +1,45 @@
 "use client";
+
+import { data } from "@/lib/data/headermainData";
 import { LogoFillIcon } from "@/assets/Icons/logo-fill-icon";
-import Button from "@/ui/Atom/Button/Button";
-import Link from "next/link";
-import { LuTicket, LuSearch, LuX, LuMenu } from "react-icons/lu";
+import { LuSearch, LuChevronDown } from "react-icons/lu";
+
 import { useState, useEffect, useRef } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useRouter, usePathname } from "next/navigation";
+import Link from "next/link";
+
+import { motion, AnimatePresence } from "motion/react";
+
 import LinkButton from "@/ui/Atom/LinkButton/LinkButton";
 import CardUdstillinger from "@/ui/Atom/CardUdstillinger/CardUdstillinger";
-import { LuChevronDown } from "react-icons/lu";
+import Button from "@/ui/Atom/Button/Button";
 import BackSection from "@/ui/Organisme/BackSection/BackSection";
 
 const HeaderMain = () => {
+  const router = useRouter();
+  // holder styr på hvilken sektion der er åben (dropdown på desktop eller mobil)
   const [activeSection, setActiveSection] = useState(null);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const menuRef = useRef(null);
 
-  const [isBackSectionVisible, setIsBackSectionVisible] = useState(true); // Scroll visibility for BackSection
-  const [lastScrollY, setLastScrollY] = useState(0); // To track the last scroll position
-  // Track scroll direction
+  // isMobileMenuOpen
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  // luk ikke menu
+  const menuRef = useRef(null);
+  const dropdownRef = useRef(null);
+  const cardRef = useRef(null);
+
+  // back section
+
+  // holder styr på hvor der scrolles iforhold til back section
+  const [isBackSectionVisible, setIsBackSectionVisible] = useState(true); // Scroll visibility for BackSection så den går væk
+  // Bruges til at spore scroll-position for at bestemme scroll-retning
+  const [lastScrollY, setLastScrollY] = useState(0);
+
+  const pathname = usePathname();
+  const isFrontPage = pathname === "/";
+
+  const [closeTimeout, setCloseTimeout] = useState(null);
+
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollY = window.scrollY;
@@ -38,73 +60,65 @@ const HeaderMain = () => {
     };
   }, [lastScrollY]);
 
-  const sections = [
-    {
-      name: "Besøg os",
-      key: "visitUs",
-      links: [
-        { name: "Åbningstider", href: "/praktiskinfo/#åbningstider" },
-        { name: "Billetpriser", href: "/praktiskinfo#Billetpriser" },
-        { name: "Transport & parkering", href: "/praktiskinfo#Transport" },
-        { name: "Anmeldelser", href: "/praktiskinfo#Anmeldelser" },
-        { name: "Café Knarr", href: "/praktiskinfo#Caféknarr" },
-        { name: "FAQ", href: "/praktiskinfo#faq" },
-        { name: "Museumsbutik" },
-        { name: "For familien & børn" },
-        { name: "For skoler" },
-        { name: "For grupper & virksomheder" },
-      ],
-    },
-    {
-      name: "Udstillinger",
-      key: "udstillinger",
-      href: "/udstillinger",
-    },
-    {
-      name: "Det Sker",
-      key: "aktiviteter",
-      links: [
-        { name: "Kalender", href: "/aktiviteter" },
-        { name: "Arrangementer" },
-        { name: "Nyt museum" },
-        { name: "Presse" },
-      ],
-    },
-    {
-      name: "Om museet",
-      key: "about",
-      href: "/ommuseet",
-    },
-  ];
-
-  // lukker menu når man klikker uden for
+  // Opdater din handleClickOutside effekt
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
-        setActiveSection(null);
+      if (
+        menuRef.current &&
+        !menuRef.current.contains(event.target) &&
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target) &&
+        cardRef.current &&
+        !cardRef.current.contains(event.target)
+      ) {
+        // Vent 150ms før lukning for at give links tid til at registrere klik
+        const timeout = setTimeout(() => {
+          setActiveSection(null);
+        }, 200);
+
+        setCloseTimeout(timeout);
       }
     };
 
     document.addEventListener("mousedown", handleClickOutside);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
+      if (closeTimeout) clearTimeout(closeTimeout);
     };
-  }, []);
+  }, [closeTimeout]);
 
   const handleButtonClick = (key) => {
     setActiveSection((prev) => (prev === key ? null : key));
   };
 
-  const handleLinkClick = () => {
-    setActiveSection(null);
-    setIsMobileMenuOpen(false);
+  const handleMobileButtonClick = (key) => {
+    // Annuller eventuel ventende lukning
+    if (closeTimeout) clearTimeout(closeTimeout);
+
+    // Toggle den aktive sektion
+    setActiveSection((prev) => (prev === key ? null : key));
+  };
+
+  const handleLinkClickWithRouter = (href) => {
+    // Annuller eventuel ventende lukning
+    if (closeTimeout) clearTimeout(closeTimeout);
+
+    // Naviger først
+    router.push(href);
+
+    // Luk menuen med en lille forsinkelse (100ms)
+    setCloseTimeout(
+      setTimeout(() => {
+        setActiveSection(null);
+        setIsMobileMenuOpen(false);
+      }, 100)
+    );
   };
 
   const toggleMobileMenu = () => {
-    setIsMobileMenuOpen(!isMobileMenuOpen);
-    if (isMobileMenuOpen) {
-      setActiveSection(null);
-    }
+    const nextState = !isMobileMenuOpen;
+    setIsMobileMenuOpen(nextState);
+    if (!nextState) setActiveSection(null);
   };
 
   // Animation variants
@@ -150,7 +164,7 @@ const HeaderMain = () => {
       <header className="fixed z-[1000] top-0 right-0 w-full bg-bw-50">
         <div className="z-[100]">
           <div className="md:py-4 py-2 px-4 md:px-10 border-b-[0.5px] flex justify-between">
-            <p>Åbent i dag 09.00 - 16.00</p>
+            <p>Åbent i dag 10.00 - 17.00</p>
             <div className="flex items-center gap-2">
               <p>DA</p>
               <LuSearch className="w-6 h-6" />
@@ -170,25 +184,32 @@ const HeaderMain = () => {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex justify-between items-center gap-4">
-              {sections.map((section) =>
-                section.href ? (
-                  <Link
-                    key={section.key}
-                    href={section.href}
-                    className="px-4 py-2  font-semibold text-lg hover:underline flex items-center"
-                    onClick={handleLinkClick}
-                  >
-                    {section.name}
-                  </Link>
-                ) : (
+              {data.map((menuCategory) =>
+                menuCategory.href ? (
                   <Button
-                    key={section.key}
                     variant="link"
                     size="header"
-                    onClick={() => handleButtonClick(section.key)}
-                    className={activeSection === section.key ? "underline" : ""}
+                    key={menuCategory.key}
+                    onClick={() => handleLinkClickWithRouter(menuCategory.href)}
+                    // className="px-4 py-2  font-semibold text-lg hover:underline flex items-center"
+                    className={
+                      activeSection === menuCategory.key ? "underline" : ""
+                    }
+                    // onClick={handleLinkClick}
                   >
-                    {section.name}
+                    {menuCategory.name}
+                  </Button>
+                ) : (
+                  <Button
+                    key={menuCategory.key}
+                    variant="link"
+                    size="header"
+                    onClick={() => handleButtonClick(menuCategory.key)}
+                    className={
+                      activeSection === menuCategory.key ? "underline" : ""
+                    }
+                  >
+                    {menuCategory.name}
                   </Button>
                 )
               )}
@@ -248,31 +269,30 @@ const HeaderMain = () => {
               transition={{ duration: 0.3 }}
             >
               <div className="px-4 py-6 space-y-6">
-                {sections.map((section) => (
+                {data.map((menuItem) => (
                   <div
-                    key={section.key}
+                    key={menuItem.key}
                     className="border-b border-bw-200 pb-4"
                   >
-                    {section.href ? (
-                      <Link
-                        href={section.href}
+                    {menuItem.href ? (
+                      <button
                         className="text-xl font-semibold block py-2"
-                        onClick={handleLinkClick}
+                        onClick={() => handleLinkClickWithRouter(menuItem.href)}
                       >
-                        {section.name}
-                      </Link>
+                        {menuItem.name}
+                      </button>
                     ) : (
                       <>
                         <button
-                          onClick={() => handleButtonClick(section.key)}
+                          onClick={() => handleMobileButtonClick(menuItem.key)}
                           className={`text-xl font-semibold w-full text-left py-2 flex justify-between items-center ${
-                            activeSection === section.key ? "underline" : ""
+                            activeSection === menuItem.key ? "underline" : ""
                           }`}
                         >
-                          {section.name}
+                          {menuItem.name}
                           <motion.span
                             animate={{
-                              rotate: activeSection === section.key ? 180 : 0,
+                              rotate: activeSection === menuItem.key ? 180 : 0,
                             }}
                             transition={{ duration: 0.2 }}
                           >
@@ -283,33 +303,34 @@ const HeaderMain = () => {
                         <motion.div
                           initial={{ opacity: 0, height: 0 }}
                           animate={{
-                            opacity: activeSection === section.key ? 1 : 0,
-                            height: activeSection === section.key ? "auto" : 0,
+                            opacity: activeSection === menuItem.key ? 1 : 0,
+                            height: activeSection === menuItem.key ? "auto" : 0,
                           }}
                           exit={{ opacity: 0, height: 0 }}
                           transition={{ duration: 0.2 }}
                           className="pl-4 mt-2 space-y-2 overflow-hidden"
                         >
-                          {section.links?.map((link, index) => (
+                          {menuItem.links?.map((link, index) => (
                             <motion.div
                               key={index}
                               custom={index}
                               variants={itemVariants}
                               initial="hidden"
                               animate={
-                                activeSection === section.key
+                                activeSection === menuItem.key
                                   ? "visible"
                                   : "hidden"
                               }
                             >
                               {link.href ? (
-                                <Link
-                                  href={link.href}
-                                  onClick={handleLinkClick}
-                                  className="block py-1 hover:underline"
+                                <button
+                                  onClick={() =>
+                                    handleLinkClickWithRouter(link.href)
+                                  }
+                                  className="block py-1 hover:underline w-full text-left"
                                 >
                                   {link.name}
-                                </Link>
+                                </button>
                               ) : (
                                 <p className="text-bw-600 py-1">{link.name}</p>
                               )}
@@ -326,7 +347,6 @@ const HeaderMain = () => {
                     ticketIcon
                     variant="blue"
                     href="/billetter"
-                    onClick={handleLinkClick}
                   />
                 </div>
               </div>
@@ -346,20 +366,20 @@ const HeaderMain = () => {
               transition={{ duration: 0.2 }}
             >
               <div className="gap-5 pt-5 pb-10 px-[40px]">
-                {sections
-                  .filter((section) => section.key === activeSection)
-                  .map((section) => (
+                {data
+                  .filter((menuItem) => menuItem.key === activeSection)
+                  .map((menuItem) => (
                     <motion.div
-                      key={section.key}
+                      key={menuItem.key}
                       initial="hidden"
                       animate="visible"
                       className="flex justify-between"
                     >
                       <h2 className="font-semibold text-2xl mb-4">
-                        {section.name}
+                        {menuItem.name}
                       </h2>
-                      <ul className="space-y-3">
-                        {section.links?.map((link, index) => (
+                      <ul ref={dropdownRef} className="space-y-3">
+                        {menuItem.links?.map((link, index) => (
                           <motion.li
                             key={index}
                             custom={index}
@@ -367,13 +387,15 @@ const HeaderMain = () => {
                             whileHover={{ x: 5 }}
                           >
                             {link.href ? (
-                              <Link
-                                href={link.href}
-                                onClick={handleLinkClick}
+                              <button
+                                // href={link.href}
+                                onClick={() =>
+                                  handleLinkClickWithRouter(link.href)
+                                }
                                 className="text-base md:text-2xl hover:underline"
                               >
                                 {link.name}
-                              </Link>
+                              </button>
                             ) : (
                               <p className="text-base text-bw-600 md:text-2xl">
                                 {link.name}
@@ -382,13 +404,20 @@ const HeaderMain = () => {
                           </motion.li>
                         ))}
                       </ul>
-                      <CardUdstillinger
-                        title="OPSLUGT AF HAVET"
-                        src="/assets/images/udstillingskort/opslugtafhavet_card.webp"
-                        description="- to skibe, der aldrig nåede havn"
-                        linkText="Læs mere"
-                        href="/udstillinger/opslugtafhavet"
-                      />
+                      <div ref={cardRef}>
+                        <CardUdstillinger
+                          onClick={() =>
+                            handleLinkClickWithRouter(
+                              "/udstillinger/opslugtafhavet"
+                            )
+                          }
+                          title="OPSLUGT AF HAVET"
+                          src="/assets/images/udstillingskort/opslugtafhavet_card.webp"
+                          description="- to skibe, der aldrig nåede havn"
+                          linkText="Læs mere"
+                          className="h-[400px]"
+                        />
+                      </div>
                     </motion.div>
                   ))}
               </div>
@@ -396,13 +425,15 @@ const HeaderMain = () => {
           )}
         </AnimatePresence>
       </header>
-      <div
-        className={`transition-transform duration-300 fixed top-[110px]  md:top-[130px] left-0 right-0 z-50 bg-bw-50 shadow  ${
-          isBackSectionVisible ? "translate-y-0" : "-translate-y-full"
-        }`}
-      >
-        <BackSection />
-      </div>
+      {!isFrontPage && (
+        <div
+          className={`transition-transform duration-300 fixed top-[110px]  md:top-[130px] left-0 right-0 z-50 bg-bw-50 shadow  ${
+            isBackSectionVisible ? "translate-y-0" : "-translate-y-full"
+          }`}
+        >
+          <BackSection />
+        </div>
+      )}
     </div>
   );
 };

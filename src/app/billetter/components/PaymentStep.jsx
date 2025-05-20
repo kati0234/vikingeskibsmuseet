@@ -104,7 +104,6 @@ const PaymentStep = ({ onNext, onBack, formData }) => {
       postTicket(ticketPayload)
         .then((res) => {
           console.log("Sendt til Supabase:", res);
-          // onNext(submittedData);
           onNext({
             ...submittedData,
             discountAmount,
@@ -128,13 +127,11 @@ const PaymentStep = ({ onNext, onBack, formData }) => {
           Trin 2 ud af 2
         </p>
         <div className="mt-1 flex gap-1">
-          {/* Første streg: delt i to farver */}
           <div className="w-full h-1 bg-black rounded"></div>
           <div className="flex w-full h-1 overflow-hidden rounded">
             <div className="w-1/2 bg-black"></div>
             <div className="w-1/2 bg-gray-300"></div>
           </div>
-          {/* Anden streg: én farve */}
         </div>
       </div>
       <button
@@ -151,7 +148,6 @@ const PaymentStep = ({ onNext, onBack, formData }) => {
           onSubmit={handleSubmit(onSubmit)}
           className="flex flex-col md:flex-row flex-wrap gap-8"
         >
-          {/* Dine informationer */}
           <div className=" w-full md:w-[411px]">
             <div className="flex items-center pb-3 gap-3">
               <div className="aspect-square w-8 h-8 flex items-center justify-center rounded-full bg-bw-950">
@@ -193,7 +189,6 @@ const PaymentStep = ({ onNext, onBack, formData }) => {
             </div>
           </div>
 
-          {/* Ordreoversigt */}
           <OrdreOversigt
             formData={formData}
             totalPrice={totalPrice}

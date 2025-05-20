@@ -2,6 +2,7 @@
 
 import LinkButton from "@/ui/Atom/LinkButton/LinkButton";
 import { LuCircleCheck } from "react-icons/lu";
+
 const OrderConfirmation = ({ formData }) => {
   const {
     name,
@@ -20,10 +21,8 @@ const OrderConfirmation = ({ formData }) => {
           Trin 2 ud af 2
         </p>
         <div className="mt-1 flex gap-1">
-          {/* Første streg: delt i to farver */}
           <div className="w-full h-1 bg-black rounded"></div>
           <div className="w-full h-1 bg-black  rounded"></div>
-          {/* Anden streg: én farve */}
         </div>
       </div>
       <div className="bg-blue-500 rounded-lg w-full overflow-hidden flex justify-center">

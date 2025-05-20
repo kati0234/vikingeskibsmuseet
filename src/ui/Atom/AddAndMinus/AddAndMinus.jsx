@@ -3,6 +3,7 @@ import { LuPlus } from "react-icons/lu";
 
 import { useController } from "react-hook-form";
 import Button from "../Button/Button";
+
 const AddAndMinus = ({
   control,
   name,
@@ -89,7 +90,7 @@ const AddAndMinus = ({
             id={name}
             type="text"
             aria-label={`Antal ${label || name}`}
-            className=" font-semibold text-lg text-center w-12 h-10   readonly focus:ring-0 focus:outline-none pointer-events-none"
+            className="font-semibold text-lg text-center w-12 h-10   readonly focus:ring-0 focus:outline-none pointer-events-none"
             value={field.value}
             onChange={handleChange}
             onBlur={field.onBlur}
