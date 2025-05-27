@@ -9,7 +9,7 @@ const headersList = {
   Authorization: `Bearer ${key}`,
 };
 
-// 🟢 POST billet (måske skal jeg lige ændte navnet på tabelen)
+//  🎟️ 📤 POST billet (måske skal jeg lige ændte navnet på tabelen)
 export async function postTicket(ticket) {
   const response = await fetch(`${url}/vikingeskibsmuseet`, {
     method: "POST",
@@ -18,24 +18,11 @@ export async function postTicket(ticket) {
   });
 
   const data = await response.json();
-  // console.log("POST response:", data);
+
   return data;
 }
 
-// 🟡 PATCH billet (fx hvis jeg vil opdatere) bruger jeg ik lige nu
-export async function patchTicket(id, patchData) {
-  const response = await fetch(`${url}?id=eq.${id}`, {
-    method: "PATCH",
-    headers: headersList,
-    body: JSON.stringify(patchData),
-  });
-
-  const data = await response.json();
-  // console.log("PATCH response:", data);
-  return data;
-}
-
-//get aktiviteter henter allle aktiviterer
+// 📥 🧡 get aktiviteter henter allle aktiviterer
 export async function getActivity() {
   const response = await fetch(`${url}/activities`, {
     method: "GET",
@@ -43,10 +30,9 @@ export async function getActivity() {
   });
 
   const data = await response.json();
-  // console.log("GET activity response:", data);
   return data;
 }
-//get aktiviteter henter singel aktivet
+// 📥 🧡 get aktiviteter henter singel aktivet
 
 export async function getSingleActivity(slug) {
   const response = await fetch(`${url}/aktiviteter?slug=eq.${slug}`, {
@@ -55,11 +41,10 @@ export async function getSingleActivity(slug) {
   });
 
   const data = await response.json();
-  // return data; tror det skal være den pg ok den anden
-  return data[0]; // Supabase returnerer et array – vi tager første element
+  return data[0];
 }
 
-//get udstilinger henter alle udstillinger på overview
+// 📥 🩵  get udstilinger henter alle udstillinger på overview
 export async function getUdstillinger() {
   const response = await fetch(`${url}/udstillinger`, {
     method: "GET",
@@ -71,6 +56,7 @@ export async function getUdstillinger() {
   // console.log("GET udstilinger response:", data);
   return data;
 }
+// 📥 🩵 get udstillingeren slug
 
 export async function getSingleUdstillinger(slug) {
   const response = await fetch(`${url}/udstillingerSingel?slug=eq.${slug}`, {
@@ -82,15 +68,7 @@ export async function getSingleUdstillinger(slug) {
   return data[0]; // Supabase returnerer et array – vi tager første element
 }
 
-// export async function postNewsletter(email) {
-//   const response = await fetch(`${url}/newsletter`, {
-//     method: "POST",
-//     headers: headersList,
-//     body: JSON.stringify({ email }), // Send som objekt
-//   });
-
-//   return await response.json(); // Returnér altid JSON – selv ved fejl
-// }
+// 📤 🩵 post newsletter
 
 export function postNewsletter(email) {
   return fetch(`${url}/newsletter`, {

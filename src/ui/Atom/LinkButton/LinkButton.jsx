@@ -1,9 +1,8 @@
 import Link from "next/link";
-import { LuMoveRight } from "react-icons/lu";
-import { LuTicket } from "react-icons/lu";
+import { LuMoveRight, LuHouse, LuTicket } from "react-icons/lu";
+
 import { linkButtonStyles } from "./LinkButton.styles";
 import { clsx } from "clsx";
-import { LuHouse } from "react-icons/lu";
 
 const LinkButton = ({
   linkText,

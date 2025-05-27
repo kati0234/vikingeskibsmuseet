@@ -411,6 +411,7 @@ const HeaderMain = () => {
                               "/udstillinger/opslugtafhavet"
                             )
                           }
+                          alt="billed af skib"
                           title="OPSLUGT AF HAVET"
                           src="/assets/images/udstillingskort/opslugtafhavet_card.webp"
                           description="- to skibe, der aldrig nåede havn"

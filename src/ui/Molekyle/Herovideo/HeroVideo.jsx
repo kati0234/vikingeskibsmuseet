@@ -8,6 +8,7 @@ const HeroVideo = () => {
         muted
         loop
         playsInline
+        poster="/assets/images/Heroskærmbillede.webp"
         className="absolute top-0 left-0 w-full h-full object-cover z-0"
       >
         <source src="/assets/images/herovideo.mp4" type="video/mp4" />

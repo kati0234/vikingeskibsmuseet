@@ -1,5 +1,5 @@
 "use client";
-import AddAndMinus from "@/ui/Atom/AddAndMinus/AddAndMinus";
+import AddAndMinus from "@/ui/Molekyle/AddAndMinus/AddAndMinus";
 import Button from "@/ui/Atom/Button/Button";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -61,6 +61,7 @@ const TicketSelection = ({ onNext, defaultValues }) => {
       { type: "67+ ", quantity: data.senior, price: 80 },
       { type: "familie ", quantity: data.family, price: 300 },
     ].filter((ticket) => ticket.quantity > 0); // Fjern dem der er 0
+
     onNext({
       tickets,
       totalPrice,

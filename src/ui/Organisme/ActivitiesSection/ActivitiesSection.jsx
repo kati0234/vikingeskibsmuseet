@@ -52,7 +52,7 @@ export default function ActivitiesSection() {
               src={card.image}
               alt={card.alt}
               fill
-              sizes="(max-width: 640px) 100vw, (max-width: 768px) 50vw, 33vw"
+              sizes="(max-width: 768px) 177px, 322px"
               className="object-cover"
             />
 

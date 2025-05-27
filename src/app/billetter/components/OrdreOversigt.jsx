@@ -4,7 +4,7 @@ import { useState } from "react";
 import { LuTicket } from "react-icons/lu";
 import InputField from "@/ui/Atom/InputField/InputField";
 import Button from "@/ui/Atom/Button/Button";
-
+import { discountCodes } from "./Validation";
 const OrdreOversigt = ({
   formData,
   totalPrice,
@@ -14,21 +14,28 @@ const OrdreOversigt = ({
   const {
     register,
     watch,
-    formState: { errors },
+    trigger,
+    formState: { errors, touchedFields, isSubmitted },
   } = useFormContext();
 
   const [isApplyingDiscount, setIsApplyingDiscount] = useState(false);
-  const discountCode = watch("discountCode");
-
   const [showDiscount, setShowDiscount] = useState(false);
+
+  const discountCode = watch("discountCode");
 
   const handleApplyDiscount = () => {
     setIsApplyingDiscount(true);
     setShowDiscount(false); // Skjul rabatten indtil vi har tjekket
 
-    setTimeout(() => {
-      if (["katinka", "vsm"].includes(discountCode?.trim().toLowerCase())) {
-        setShowDiscount(true); // Vis rabatten hvis koden er gyldig
+    setTimeout(async () => {
+      const isValid = await trigger("discountCode");
+
+      if (
+        isValid &&
+        discountCode &&
+        discountCodes.includes(discountCode.trim().toLowerCase())
+      ) {
+        setShowDiscount(true);
       } else {
         setShowDiscount(false);
       }
@@ -59,8 +66,12 @@ const OrdreOversigt = ({
           type="text"
           placeholder="Indtast rabatkode"
           register={register}
-          error={errors.discountCode}
-          success={discountCode && !errors.discountCode}
+          error={
+            (isSubmitted || touchedFields.discountCode) && errors.discountCode
+          }
+          success={
+            (isSubmitted || touchedFields.discountCode) && !errors.discountCode
+          }
           isLoading={isApplyingDiscount}
         />
 

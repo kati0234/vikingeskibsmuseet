@@ -17,7 +17,7 @@ const CardUdstillinger = ({
       <div className="absolute inset-0">
         <Image
           src={src || "https://picsum.photos/id/12/200/300"}
-          alt={alt}
+          alt={alt || "billed beskrivelse"}
           fill
           sizes="(max-width: 768px) 100vw, 33vw"
           className="object-cover rounded-2xl"
@@ -26,9 +26,9 @@ const CardUdstillinger = ({
       </div>
       <div className="p-8 z-10 flex justify-between flex-col">
         <div>
-          <h2 className=" text-[28px]  md:text-[32px] font-semibold">
+          <p className=" text-[28px] uppercase  md:text-[32px] font-semibold">
             {title}
-          </h2>
+          </p>
           <p className="md:text-xl text-base">{description}</p>
         </div>
         {onClick && (

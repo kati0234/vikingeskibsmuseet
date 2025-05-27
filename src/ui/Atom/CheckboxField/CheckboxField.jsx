@@ -21,7 +21,6 @@ const CheckboxField = ({ label, name, register, error }) => {
             className="w-5 h-5 border border-bw-600 rounded appearance-none  "
           />
 
-          {/* hvis chekred skal styles checked:bg-blue-500 */}
           {isChecked && (
             <LuCheck className="w-4 h-4  absolute top-0 left-0 m-0.5 pointer-events-none" />
           )}

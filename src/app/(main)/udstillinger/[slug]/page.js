@@ -1,6 +1,6 @@
 import { getSingleUdstillinger } from "@/lib/api"; // justér stien hvis nødvendigt
 import BuyTicketSection from "@/ui/Molekyle/BuyTicketSection/BuyTicketSection";
-import UdstillingerCarousel from "@/ui/Molekyle/Swiper/UdstillingerCarosel";
+import UdstillingerCarousel from "@/ui/Organisme/Swiper/UdstillingerCarosel";
 import Image from "next/image";
 
 export default async function SingelUdstillinger({ params }) {
@@ -16,11 +16,16 @@ export default async function SingelUdstillinger({ params }) {
       <div className="relative h-[500px] mt-[150px] w-full">
         <Image
           src={udstilling.image_hero}
-          alt="Katinka"
+          alt={udstilling.alt_hero}
           className="object-cover"
           fill
           priority
-          sizes="(max-width: 1960px) 100vw, 2760px"
+          sizes="
+          (max-width: 640px) 100vw, 
+          (max-width: 1024px) 90vw,
+          (max-width: 1600px) 80vw,
+          2760px
+        "
         />
         <div className="bg-black/15 absolute w-full h-full"></div>
         <div className="absolute bottom-0 left-0  text-bw-50 p-4">
@@ -50,7 +55,7 @@ export default async function SingelUdstillinger({ params }) {
             <div className="w-full aspect-[167/111] overflow-hidden  md:rounded-lg relative">
               <Image
                 src={udstilling.image_1}
-                alt="Katinka"
+                alt={udstilling.alt_1}
                 fill
                 className="object-cover"
                 sizes="(max-width: 960px) 100vw, 5760px"
@@ -61,7 +66,7 @@ export default async function SingelUdstillinger({ params }) {
             <div className="w-full aspect-square overflow-hidden  md:rounded-lg relative">
               <Image
                 src={udstilling.image_2}
-                alt="Katinka"
+                alt={udstilling.alt_2}
                 fill
                 className="object-cover"
                 sizes="(max-width: 960px) 100vw, 5760px"
@@ -87,7 +92,7 @@ export default async function SingelUdstillinger({ params }) {
             <div className="w-full aspect-[167/188] overflow-hidden  md:rounded-lg relative">
               <Image
                 src={udstilling.image_3}
-                alt="Katinka"
+                alt={udstilling.alt_3}
                 fill
                 className="object-cover"
                 sizes="(max-width: 960px) 100vw, 5760px"
@@ -98,7 +103,7 @@ export default async function SingelUdstillinger({ params }) {
             <div className="w-full aspect-[167/94] overflow-hidden  md:rounded-lg relative">
               <Image
                 src={udstilling.image_4}
-                alt="Katinka"
+                alt={udstilling.alt_4}
                 fill
                 className="object-cover"
                 sizes="(max-width: 960px) 100vw, 5760px"
@@ -125,7 +130,7 @@ export default async function SingelUdstillinger({ params }) {
             <div className="w-full  md:rounded-lg  overflow-hidden aspect-[167/111] relative">
               <Image
                 src={udstilling.image_5}
-                alt="Katinka"
+                alt={udstilling.alt_5}
                 fill
                 sizes="(max-width: 960px) 100vw, 5760px"
                 className="object-cover"
@@ -136,7 +141,7 @@ export default async function SingelUdstillinger({ params }) {
             <div className="w-full aspect-square overflow-hidden md:rounded-lg  relative">
               <Image
                 src={udstilling.image_6}
-                alt="Katinka"
+                alt={udstilling.alt_6}
                 fill
                 sizes="(max-width: 960px) 100vw, 5760px"
                 className="object-cover"

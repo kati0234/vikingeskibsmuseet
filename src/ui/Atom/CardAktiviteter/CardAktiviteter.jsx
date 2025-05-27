@@ -6,6 +6,7 @@ const CardAktiviteter = ({
   slug,
   description,
   dato,
+  alt,
   src,
   tidspunkt,
 }) => {
@@ -14,7 +15,7 @@ const CardAktiviteter = ({
     <div className="flex gap-2   w-[300px] relative ">
       <Image
         src={src}
-        alt={title}
+        alt={alt}
         width={100}
         height={140}
         className="w-[100px] h-[140px] object-cover rounded-lg "

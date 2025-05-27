@@ -1,5 +1,5 @@
-import HeaderTicket from "../componets/layouts/ticket-flow/Header-ticket";
-import FooterTicket from "../componets/layouts/ticket-flow/Footer-ticket";
+import HeaderTicket from "../layouts/ticket-flow/Header-ticket";
+import FooterTicket from "../layouts/ticket-flow/Footer-ticket";
 
 export default function BilletLayout({ children }) {
   return (

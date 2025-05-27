@@ -79,16 +79,26 @@ export default function ActivitiesCarousel() {
       <div className="flex gap-10 z-10">
         <button
           type="button"
+          aria-label="slide til venstre"
+          aria-labelledby="labelvenstre"
           onClick={() => swiperRef.current?.slidePrev()}
           className="text-4xl text-beige-500 hover:scale-110 transition"
         >
+          <span id="labelvenstre" className="sr-only">
+            swip til venstre
+          </span>
           <LuMoveLeft />
         </button>
         <button
           type="button"
+          aria-label="slide til højre"
+          aria-labelledby="labelhøjre"
           onClick={() => swiperRef.current?.slideNext()}
           className="text-4xl text-beige-500 hover:scale-110 transition"
         >
+          <span className="sr-only" id="labelhøjre">
+            swip til højre
+          </span>
           <LuMoveRight />
         </button>
       </div>

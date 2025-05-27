@@ -1,3 +1,4 @@
+"use client";
 import { inputFieldStyles } from "./InputField.styles";
 import { useState } from "react";
 const InputField = ({

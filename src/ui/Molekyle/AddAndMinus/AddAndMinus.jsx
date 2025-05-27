@@ -2,7 +2,7 @@ import { LuMinus } from "react-icons/lu";
 import { LuPlus } from "react-icons/lu";
 
 import { useController } from "react-hook-form";
-import Button from "../Button/Button";
+import Button from "../../Atom/Button/Button";
 
 const AddAndMinus = ({
   control,

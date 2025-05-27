@@ -159,6 +159,7 @@ export default function Aktiviteter() {
                 {events.length > 0 ? (
                   events.map((aktivitet) => (
                     <CardAktiviteter
+                      alt={aktivitet.alt}
                       key={aktivitet.id}
                       src={aktivitet.image_url}
                       title={aktivitet.title}

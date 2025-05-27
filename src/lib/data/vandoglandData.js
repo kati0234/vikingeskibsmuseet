@@ -29,7 +29,7 @@ export const data = [
   {
     image: "/assets/images/landogvand/land_4.webp",
     alt: "Ansat der står klædt ud som viking med beklædning og sværd",
-    title: "VIKINGERNES VÆRKSTED",
+    title: "BØRNEBYGDEN",
     tag: "landet",
     description: "Hverdage | 10.00 - 12.00",
     dato: "1. april - 31. december",
@@ -47,7 +47,7 @@ export const data = [
   {
     image: "/assets/images/landogvand/vand_2.webp",
     alt: "Vikingeskib på havet taget inde fra",
-    title: "Flydende formidling og rå muskelkraft",
+    title: "hils på en af vores marinarkæologer",
     tag: "vandet",
     description: "Hverdage | 10.00 - 12.00",
     dato: "1. april - 31. juli",

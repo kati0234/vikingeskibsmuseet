@@ -2,7 +2,7 @@
 import { useForm, FormProvider } from "react-hook-form";
 import { useState, useEffect } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { paymentSchema } from "./Validation";
+import { paymentSchema, discountCodes } from "./Validation";
 import { postTicket } from "@/lib/api";
 import { LuCreditCard, LuMoveLeft } from "react-icons/lu";
 
@@ -39,9 +39,8 @@ const PaymentStep = ({ onNext, onBack, formData }) => {
 
   // Rabatkode logik
   const discountCode = watch("discountCode");
-  const isValidDiscount = ["katinka", "vsm"].includes(
-    discountCode?.trim().toLowerCase()
-  );
+  const normalizedCode = discountCode?.trim().toLowerCase() || "";
+  const isValidDiscount = discountCodes.includes(normalizedCode);
   const discountRate = isValidDiscount ? 0.2 : 0;
 
   // Prisberegninger

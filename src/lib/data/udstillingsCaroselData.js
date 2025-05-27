@@ -12,6 +12,7 @@ export const data = [
     alt: "Skilt fra museumsudstillingen på museet",
     description: "- En grundfortælling om rejsen over åbent havn",
     linkText: "Læs mere",
+    title: "Stig om bord på et vikingeskib",
     herf: "/udstillinger/sigombord",
   },
   {
@@ -24,7 +25,7 @@ export const data = [
   },
   {
     image: "/assets/images/udstillingskort/defemrekonstruktioner_card.webp",
-    alt: "Grafik af havets bølger",
+    alt: "Vikingeskib i havnen til museumsøen",
     title: "DE FEM REKONSTRUKTIONER",
     description: "- Særudstilling, arkæologi under vand",
     linkText: "Læs mere",
@@ -32,7 +33,7 @@ export const data = [
   },
   {
     image: "/assets/images/udstillingskort/defemvikingeskibe_card.webp",
-    alt: "Original vikingeskib fra udstillinger",
+    alt: "Vikingeskib i havnen til museumsøen",
     title: "DE FEM VIKINGESKIBE",
     description: "- Særudstilling, arkæologi under vand",
     linkText: "Læs mere",
