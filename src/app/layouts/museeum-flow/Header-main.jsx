@@ -45,9 +45,9 @@ const HeaderMain = () => {
       const currentScrollY = window.scrollY;
 
       if (currentScrollY > lastScrollY && currentScrollY > 50) {
-        setIsBackSectionVisible(false); // Hide on scroll down
+        setIsBackSectionVisible(false); // skluer scroll down
       } else {
-        setIsBackSectionVisible(true); // Show on scroll up
+        setIsBackSectionVisible(true); // viser scroll up
       }
 
       setLastScrollY(currentScrollY);
@@ -60,7 +60,7 @@ const HeaderMain = () => {
     };
   }, [lastScrollY]);
 
-  // Opdater din handleClickOutside effekt
+  // Opdater handleClickOutside effekt
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (
@@ -191,11 +191,9 @@ const HeaderMain = () => {
                     size="header"
                     key={menuCategory.key}
                     onClick={() => handleLinkClickWithRouter(menuCategory.href)}
-                    // className="px-4 py-2  font-semibold text-lg hover:underline flex items-center"
                     className={
                       activeSection === menuCategory.key ? "underline" : ""
                     }
-                    // onClick={handleLinkClick}
                   >
                     {menuCategory.name}
                   </Button>
@@ -388,7 +386,6 @@ const HeaderMain = () => {
                           >
                             {link.href ? (
                               <button
-                                // href={link.href}
                                 onClick={() =>
                                   handleLinkClickWithRouter(link.href)
                                 }

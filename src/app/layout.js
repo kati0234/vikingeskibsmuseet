@@ -3,7 +3,7 @@ import "./globals.css";
 import "./colors.css";
 
 const livvic = Livvic({
-  subsets: ["latin"], // eller ['latin-ext'] hvis du har brug for flere tegn
+  subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
   display: "swap",
 });

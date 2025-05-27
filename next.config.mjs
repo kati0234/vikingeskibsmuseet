@@ -6,11 +6,6 @@ const nextConfig = {
         protocol: "https",
         hostname: "picsum.photos",
       },
-
-      //   {
-      //     protocol: "https",
-      //     hostname: "https://izlwnrcwutxxrclxaqwi.supabase.co/rest/v1/foofest",
-      //   },
     ],
   },
 };

@@ -10,9 +10,8 @@ const CardAktiviteter = ({
   src,
   tidspunkt,
 }) => {
-  console.log("Slug for project:", slug);
   return (
-    <div className="flex gap-2   w-[300px] relative ">
+    <div className="flex gap-2 w-[300px] relative ">
       <Image
         src={src}
         alt={alt}
@@ -30,7 +29,6 @@ const CardAktiviteter = ({
             {title}
           </Link>
         </h2>
-
         <p className="text-base">{dato}</p>
         <p className="text-base">{tidspunkt}</p>
         <p className="text-sm text-bw-700   truncate ">{description}</p>

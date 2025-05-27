@@ -1,4 +1,4 @@
-"use client"; // for app-router
+"use client";
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -38,7 +38,7 @@ export default function Breadcrumbs() {
         </li>
         {segments.map((segment, i) => {
           const path = "/" + segments.slice(0, i + 1).join("/");
-          const label = LinkToLabel[segment] ?? decodeURIComponent(segment); // fallback hvis ikke i listen
+          const label = LinkToLabel[segment] ?? decodeURIComponent(segment); // fallback hvis ikke i listen link to label
 
           return (
             <li key={path} className="flex  items-center">

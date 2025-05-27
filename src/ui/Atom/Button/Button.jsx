@@ -38,7 +38,6 @@ const Button = ({
 
   const showSpinner = isLoading && internalLoading;
 
-  // console.log("Is selected:", isSelected);
   return (
     <button
       className={clsx(

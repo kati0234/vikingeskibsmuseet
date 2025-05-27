@@ -9,12 +9,12 @@ export const inputFieldStyles = tv({
       success: "border-success",
     },
     readOnly: {
-      true: "bg-gray-200 cursor-not-allowed", // Readonly style
+      true: "bg-gray-200 cursor-not-allowed",
       false: "",
     },
     inputType: {
       number:
-        "appearance-none  [&::-webkit-outer-spin-button]:appearance-none ", // Fjerner pilene på number inputs
+        "appearance-none  [&::-webkit-outer-spin-button]:appearance-none ", // Fjerner pilene på nummer inputs
       text: "",
     },
     size: {
@@ -30,4 +30,3 @@ export const inputFieldStyles = tv({
     inputType: "text",
   },
 });
-// ring-bw-500 focus:ring-bw-500

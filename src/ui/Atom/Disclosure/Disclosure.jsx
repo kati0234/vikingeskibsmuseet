@@ -26,7 +26,6 @@ const MyDisclosure = ({ question, children }) => {
             </div>
           </DisclosureButton>
 
-          {/* AnimatePresence for smooth exit animation */}
           <AnimatePresence initial={false}>
             {open && (
               <DisclosurePanel static>

@@ -9,12 +9,12 @@ const headersList = {
   Authorization: `Bearer ${key}`,
 };
 
-//  🎟️ 📤 POST billet (måske skal jeg lige ændte navnet på tabelen)
+//  🎟️ 📤 POST billet
 export async function postTicket(ticket) {
   const response = await fetch(`${url}/vikingeskibsmuseet`, {
     method: "POST",
     headers: headersList,
-    body: JSON.stringify([ticket]), // VIGTIGT: Send som array til Supabase
+    body: JSON.stringify([ticket]), // Send som array til Supabase i sb er det kollonen jasonb
   });
 
   const data = await response.json();
@@ -44,19 +44,17 @@ export async function getSingleActivity(slug) {
   return data[0];
 }
 
-// 📥 🩵  get udstilinger henter alle udstillinger på overview
+// 📥 get udstilinger henter alle udstillinger på overview
 export async function getUdstillinger() {
   const response = await fetch(`${url}/udstillinger`, {
     method: "GET",
     headers: headersList,
   });
 
-  // husk at slet log
   const data = await response.json();
-  // console.log("GET udstilinger response:", data);
   return data;
 }
-// 📥 🩵 get udstillingeren slug
+// 📥  get udstillingeren slug
 
 export async function getSingleUdstillinger(slug) {
   const response = await fetch(`${url}/udstillingerSingel?slug=eq.${slug}`, {
@@ -65,10 +63,10 @@ export async function getSingleUdstillinger(slug) {
   });
 
   const data = await response.json();
-  return data[0]; // Supabase returnerer et array – vi tager første element
+  return data[0]; // Supabase returnerer et array – bureg første element
 }
 
-// 📤 🩵 post newsletter
+// 📤  post newsletter
 
 export function postNewsletter(email) {
   return fetch(`${url}/newsletter`, {
